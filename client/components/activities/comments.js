@@ -16,35 +16,7 @@ BlazeComponent.extendComponent({
   getInput() {
     return this.$('.js-new-comment-input');
   },
-
-  events() {
-    return [{
-      'click .js-new-comment:not(.focus)'() {
-        commentFormIsOpen.set(true);
-      },
-      'submit .js-new-comment-form'(evt) {
-        const input = this.getInput()
-        const text = input.val().trim();
-        if (text) {
-          CardComments.insert({
-            text,
-            boardId: this.currentData().boardId,
-            cardId: this.currentData()._id,
-          });
-          resetCommentInput(input);
-          Tracker.flush();
-          autosize.update(input);
-        }
-        evt.preventDefault();
-      },
-      // Pressing Ctrl+Enter should submit the form
-      'keydown form textarea'(evt) {
-        if (evt.keyCode === 13 && (evt.metaKey || evt.ctrlKey)) {
-          this.find('button[type=submit]').click();
-        }
-      },
-    }];
-  },
+    evt.preventDefault();  },
 }).register('commentForm');
 
 // XXX This should be a static method of the `commentForm` component

@@ -6,6 +6,7 @@ Template.boardMenuPopup.events({
   },
   'click .js-change-board-color': Popup.open('boardChangeColor'),
   'click .js-change-language': Popup.open('changeLanguage'),
+  'click .js-invite-emails-for-board': Popup.open('inviteEmailsForBoard'),
   'click .js-archive-board ': Popup.afterConfirm('archiveBoard', function() {
     const currentBoard = Boards.findOne(Session.get('currentBoard'));
     currentBoard.archive();
@@ -13,6 +14,20 @@ Template.boardMenuPopup.events({
     // confirm that the board was successfully archived.
     FlowRouter.go('home');
   }),
+});
+
+Template.inviteEmailsForBoardPopup.events({
+  submit(evt, tpl) {
+    evt.preventDefault();
+    const emails = $.trim(tpl.find('.js-invite-emails-input').value);
+    
+    const emailArray = emails.split(";");
+    Meteor.call('enrollAccounts', emailArray, 'board', Session.get('currentBoard'), function (error, result){
+      let notify;
+    });
+
+    Popup.back();
+  },
 });
 
 Template.boardChangeTitlePopup.events({
@@ -43,15 +58,35 @@ BlazeComponent.extendComponent({
     return currentBoard && currentBoard.stars >= 2;
   },
 
-  events() {
+  getSortType: function(){
+    var sort = Session.get('currentBoardSort');
+    if( ! sort ){
+      var currentBoard = Boards.findOne(Session.get('currentBoard'));
+      sort = currentBoard.sortType;
+    }      
+    return  sort;
+  },
+  getSortTypeText: function(){
+    return 'sort-by-'+ this.getSortType();
+  },
+  
+  events: function() {
     return [{
+      'click .js-change-sort': Popup.open('changeBoardSort'),
       'click .js-edit-board-title': Popup.open('boardChangeTitle'),
       'click .js-star-board'() {
         Meteor.user().toggleBoardStar(Session.get('currentBoard'));
       },
       'click .js-open-board-menu': Popup.open('boardMenu'),
       'click .js-change-visibility': Popup.open('boardChangeVisibility'),
-      'click .js-open-filter-view'() {
+      'click .js-open-board-search-view': function() {
+        Sidebar.setView('boardsearch');
+      },
+      'click .js-board-search-reset': function(evt) {
+        evt.stopPropagation();
+        Sidebar.setView();
+      },
+      'click .js-open-filter-view': function() {
         Sidebar.setView('filter');
       },
       'click .js-filter-reset'(evt) {
@@ -108,6 +143,55 @@ BlazeComponent.extendComponent({
   onCreated() {
     this.visibilityMenuIsOpen = new ReactiveVar(false);
     this.visibility = new ReactiveVar('private');
+    let currentOrganization;
+    currentOrganization = Organizations.findOne(Session.get('currentOrgIdHomeBoardList'));
+    if( !currentOrganization)
+      currentOrganization = Organizations.findOne({shortName: Session.get('currentOrganizationShortName')});
+    if( !currentOrganization){
+      if( Session.get('currentBoard') && Boards.findOne(Session.get('currentBoard')) )
+        currentOrganization = Organizations.findOne(  Boards.findOne(Session.get('currentBoard')).organizationId );
+    }
+    this.showOrgMemberAutoJoin = new ReactiveVar(false);
+    this.checkOrgMemberAutoJoin = new ReactiveVar(false);
+    if( currentOrganization ){
+      this.showOrgMemberAutoJoin = new ReactiveVar(true);
+      if( Boards.find({organizationId: currentOrganization._id, orgMemberAutoJoin: false,}).count() < 1)
+        this.checkOrgMemberAutoJoin.set(true);
+    }
+  },
+
+  onDestroyed(){
+    Session.set('currentOrgIdHomeBoardList',''); 
+  },
+
+  organizations: function() {
+    return Organizations.find({}, {
+      sort: ['title']
+    });
+  },
+
+  canCreateBoardOrgs(){
+    // meteor mini-mongo not support $elemMatch? it alway return all the elements
+    return Organizations.find(
+       { members:{ $elemMatch: { userId: Meteor.userId(), isAdmin: true } } }
+    )
+  },
+
+  isCurrentOrg: function(id){
+
+    let currentOrganization;
+    currentOrganization = Organizations.findOne(Session.get('currentOrgIdHomeBoardList'));
+    if( !currentOrganization)
+      currentOrganization = Organizations.findOne({shortName: Session.get('currentOrganizationShortName')});
+    if( !currentOrganization){
+      if( Session.get('currentBoard') && Boards.findOne(Session.get('currentBoard')) )
+        currentOrganization = Organizations.findOne(  Boards.findOne(Session.get('currentBoard')).organizationId );
+    }
+    if( (currentOrganization && currentOrganization._id === id) ||
+      (!currentOrganization && !id))
+      return true;
+    else
+      return false;
   },
 
   visibilityCheck() {
@@ -125,12 +209,15 @@ BlazeComponent.extendComponent({
 
   onSubmit(evt) {
     evt.preventDefault();
-    const title = this.find('.js-new-board-title').value;
-    const visibility = this.visibility.get();
+    var title = this.find('.js-new-board-title').value;
+    var visibility = this.visibility.get();
+    var organizationId = this.find('.org-sel').value;
 
-    const boardId = Boards.insert({
-      title,
+    var boardId = Boards.insert({
+      title: title,
+      organizationId: organizationId,
       permission: visibility,
+      orgMemberAutoJoin: this.checkOrgMemberAutoJoin.get(),
     });
 
     Utils.goBoardId(boardId);
@@ -145,6 +232,16 @@ BlazeComponent.extendComponent({
         this.setVisibility(this.currentData());
       },
       'click .js-change-visibility': this.toggleVisibilityMenu,
+      'change #org-id': function(evt) {
+        var orgId = $(evt.target).val();
+        if( orgId !== '')
+          this.showOrgMemberAutoJoin.set(true);
+        else
+          this.showOrgMemberAutoJoin.set(false);
+      },
+      'click .js-org-member-auto-join': function(){
+        this.checkOrgMemberAutoJoin.set( !this.checkOrgMemberAutoJoin.get() )
+      },
       'click .js-import': Popup.open('boardImportBoard'),
       submit: this.onSubmit,
     }];
@@ -174,3 +271,24 @@ BlazeComponent.extendComponent({
     }];
   },
 }).register('boardChangeVisibilityPopup');
+
+
+Template.changeBoardSortPopup.events({
+  'click .js-sort-votes, click .js-sort-createAt, click .js-sort-dateLastActivity, click .js-sort-sort': function(event) {
+    
+    var sortType = "";
+    if( $(event.currentTarget).hasClass('js-sort-votes'))
+      sortType = "votes";
+    else if( $(event.currentTarget).hasClass('js-sort-createAt'))
+      sortType = "createAt";
+    else if( $(event.currentTarget).hasClass('js-sort-dateLastActivity'))
+      sortType = "dateLastActivity";
+    else if( $(event.currentTarget).hasClass('js-sort-sort'))
+      sortType = "sort";
+    Session.set('currentBoardSort', sortType);
+    // Boards.update(currentBoard._id, {
+    //   sortType: sortType
+    // });
+    Popup.back(1);
+  }
+});

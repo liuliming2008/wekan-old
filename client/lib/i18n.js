@@ -4,18 +4,24 @@
 
 Tracker.autorun(() => {
   const currentUser = Meteor.user();
-  let language;
+  var language;
   if (currentUser) {
     language = currentUser.profile && currentUser.profile.language;
-  } else {
-    language = navigator.language || navigator.userLanguage;
+  } 
+  if (!language) {
+    language =  window.navigator.userLanguage || window.navigator.language || 'zh-CN';    
   }
 
+  // safari mobile return zh-cn not zh-CN of window.navigator.language
+  // but TAPi18n only recognize zh-CN
+  if( language.indexOf('-') > 0 )
+    language = language.substr(0,language.indexOf('-')+1) + language.substr(language.indexOf('-')+1).toUpperCase();
+  
   if (language) {
+
     TAPi18n.setLanguage(language);
 
-    // XXX
-    const shortLanguage = language.split('-')[0];
-    T9n.setLanguage(shortLanguage);
+    // T9n need to change zh-CN to zh_cn
+    T9n.setLanguage(language.replace(/-/,"_").toLowerCase());
   }
 });

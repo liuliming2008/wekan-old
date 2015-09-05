@@ -47,6 +47,10 @@ Cards.attachSchema(new SimpleSchema({
   userId: {
     type: String,
   },
+  votes: {
+    type: Number,
+    decimal: true
+  },
   sort: {
     type: Number,
     decimal: true,
@@ -55,13 +59,41 @@ Cards.attachSchema(new SimpleSchema({
 
 Cards.allow({
   insert(userId, doc) {
-    return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
+      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
+      if( Meteor.user().isBoardAdmin(doc.boardId) )
+        return true;
+      else if( ( Lists.findOne(doc.listId).permission === 'registered' && Meteor.user()) || 
+        ( Lists.findOne(doc.listId).permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
+        return true;
+      else
+        return false;
+    }
   },
   update(userId, doc) {
-    return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
+      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
+      if( Meteor.user().isBoardAdmin(doc.boardId) )
+        return true;
+      else if( userId === doc.userId)
+        return true;
+      else
+        return false;
+    }      
   },
   remove(userId, doc) {
-    return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
+      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
+      if( Meteor.user().isBoardAdmin(doc.boardId) )
+        return true;
+      else if( userId === doc.userId)
+        return true;
+      else
+        return false;
+    }
   },
   fetch: ['boardId'],
 });
@@ -197,10 +229,13 @@ Cards.before.insert((userId, doc) => {
   if(!doc.hasOwnProperty('archived')){
     doc.archived = false;
   }
+  doc.votes = 0;
+
   if (!doc.userId) {
     doc.userId = userId;
   }
 });
+
 
 if (Meteor.isServer) {
   Cards.after.insert((userId, doc) => {
@@ -232,8 +267,11 @@ if (Meteor.isServer) {
           listId: doc.listId,
           cardId: doc._id,
         });
+
       }
     }
+    if (_.contains(fieldNames, 'description')) 
+      Cards.update(doc._id,{$set: {dateLastActivity: new Date()}});
   });
 
   // New activity for card moves
@@ -281,6 +319,7 @@ if (Meteor.isServer) {
         cardId: doc._id,
       });
     }
+    
   });
 
   // Remove all activities associated with a card if we remove the card
@@ -289,4 +328,5 @@ if (Meteor.isServer) {
       cardId: doc._id,
     });
   });
+
 }

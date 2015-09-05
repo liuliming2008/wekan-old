@@ -10,6 +10,20 @@ Boards.attachSchema(new SimpleSchema({
   archived: {
     type: Boolean,
   },
+  createUser: {
+    type: String,
+  },
+  organizationId: {
+    type: String,
+    optional: true,
+  },
+  orgMemberAutoJoin: {
+    type: Boolean,
+    optional: true,
+  },
+  sortType: {
+    type: String
+  },
   createdAt: {
     type: Date,
     denyUpdate: true,
@@ -58,7 +72,7 @@ Boards.attachSchema(new SimpleSchema({
   },
   permission: {
     type: String,
-    allowedValues: ['public', 'private'],
+    allowedValues: ['public','collaborate', 'private']
   },
   color: {
     type: String,
@@ -73,10 +87,17 @@ Boards.attachSchema(new SimpleSchema({
   },
 }));
 
-
 Boards.helpers({
   isPublic() {
     return this.permission === 'public';
+  },
+
+  isCollaborate: function() {
+    return this.permission === 'collaborate';
+  },
+
+  isPrivate: function() {
+    return this.permission === 'private';
   },
 
   lists() {
@@ -185,7 +206,7 @@ Boards.mutations({
       return {
         $set: {
           [`members.${memberIndex}.isActive`]: true,
-          [`members.${memberIndex}.isAdmin`]: false,
+          // [`members.${memberIndex}.isAdmin`]: false,
         },
       };
     }
@@ -215,7 +236,12 @@ Boards.mutations({
 if (Meteor.isServer) {
   Boards.allow({
     insert: Meteor.userId,
-    update: allowIsBoardAdmin,
+    update(userId, doc){
+      if( allowIsBoardAdmin || doc.permission === 'collaborate' )
+        return true;
+      else
+        return false;
+    },
     remove: allowIsBoardAdmin,
     fetch: ['members'],
   });
@@ -268,6 +294,7 @@ Boards.before.insert((userId, doc) => {
   doc.slug = doc.slug || getSlug(doc.title) || 'board';
   doc.createdAt = new Date();
   doc.archived = false;
+  doc.createUser = userId;
   doc.members = doc.members || [{
     userId,
     isAdmin: true,
@@ -275,11 +302,19 @@ Boards.before.insert((userId, doc) => {
   }];
   doc.stars = 0;
   doc.color = Boards.simpleSchema()._schema.color.allowedValues[0];
+  doc.organizationId = doc.organizationId || '';
 
   // Handle labels
   const colors = Boards.simpleSchema()._schema['labels.$.color'].allowedValues;
   const defaultLabelsColors = _.clone(colors).splice(0, 6);
-  doc.labels = defaultLabelsColors.map((color) => {
+
+  if( !(doc.sortType))
+    if( doc.permission === "collaborate" || doc.permission === "public")
+      doc.sortType = 'votes';
+    else
+      doc.sortType = 'sort';
+
+  doc.labels = _.map(defaultLabelsColors, (color) => {
     return {
       color,
       _id: Random.id(6),

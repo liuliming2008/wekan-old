@@ -14,6 +14,10 @@ Lists.attachSchema(new SimpleSchema({
     type: Date,
     denyUpdate: true,
   },
+  permission: {
+    type: String,
+    allowedValues: ['anonymous','registered', 'member', 'admin']
+  },
   sort: {
     type: Number,
     decimal: true,
@@ -42,10 +46,24 @@ Lists.allow({
 
 Lists.helpers({
   cards() {
-    return Cards.find(Filter.mongoSelector({
+    var sortTypeText = Session.get("currentBoardSort");
+    var sortType = {};
+    if( !sortTypeText )
+      sortTypeText = this.board.sortType;
+    if( !sortTypeText )
+      sortTypeText = 'sort';
+
+    if( sortTypeText === 'sort' )
+      sortType[sortTypeText] = 1;
+    else
+      sortType[sortTypeText] = -1;
+
+    var slector = {
       listId: this._id,
       archived: false,
-    }), { sort: ['sort'] });
+    };
+       
+    return Cards.find(Filter.mongoSelector(slector), { sort: sortType });
   },
 
   allCards() {
