@@ -66,10 +66,17 @@ class SetFilter {
 }
 
 class RegexFilter {
+<<<<<<< HEAD
   constructor(checked) {
     this._dep = new Tracker.Dependency();
     this._regex = '';
     this._checked = checked ? checked:false;
+=======
+  constructor() {
+    this._dep = new Tracker.Dependency();
+    this._regex = '';
+    this._checked = false;
+>>>>>>> add votes
   }
 
   get() {
@@ -87,13 +94,19 @@ class RegexFilter {
   }
 
   checked(){
+<<<<<<< HEAD
     this._dep.depend();
+=======
+>>>>>>> add votes
     return this._checked;
   }
 
   toogleChecked(){
     this._checked = ! this._checked;
+<<<<<<< HEAD
     this._dep.changed();
+=======
+>>>>>>> add votes
   }
 
   _isActive() {
@@ -117,7 +130,11 @@ Filter = {
   // before changing the schema.
   labelIds: new SetFilter(),
   members: new SetFilter(),
+<<<<<<< HEAD
   title: new RegexFilter(true),
+=======
+  title: new RegexFilter(),
+>>>>>>> add votes
   description: new RegexFilter(),
 
   _fields: ['labelIds', 'members', 'title', 'description'],
@@ -150,6 +167,7 @@ Filter = {
       return {};
 
     const filterSelectorSet = {};
+<<<<<<< HEAD
     this._fields_set.forEach((fieldName) => {
       const filter = this[fieldName];
       if (filter._isActive())
@@ -169,6 +187,27 @@ Filter = {
         
     });
 
+=======
+    _.forEach(this._fields_set, (fieldName) => {
+      const filter = this[fieldName];
+      if (filter._isActive())
+        filterSelectorSet[fieldName] = filter._getMongoSelector();
+    });
+
+    const filterSelectorRegex = new Array();
+    _.forEach(this._fields_regex, (fieldName) => {
+      const filter = this[fieldName];
+      if (filter._isActive())
+      {
+        //filterSelectorRegex.push({''+fieldName: {$regex:'.*'+filter.get()+'.*', $options: ''}});
+        var selector = {};
+        selector[fieldName] = filter._getMongoSelector(); 
+        filterSelectorRegex.push(selector);
+      }
+        
+    });
+
+>>>>>>> add votes
     if( filterSelectorRegex.length > 0 )
       filterSelectorSet['$or'] = filterSelectorRegex;
 
