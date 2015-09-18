@@ -232,18 +232,51 @@ BlazeComponent.extendComponent({
     this.permissionMenuIsOpen.set(!this.permissionMenuIsOpen.get());
   },
 
+  onCreated() {
+    this.permissionMenuIsOpen = new ReactiveVar(false);
+    const currentBoard = Boards.findOne(Session.get('currentBoard'));
+    if( currentBoard.isCollaborate() && currentBoard.lists().count() === 0 )
+      this.permission = new ReactiveVar('registered');
+    else if( currentBoard.isCollaborate() )
+      this.permission = new ReactiveVar('admin');
+    else
+      this.permission = new ReactiveVar('member'); 
+  },
+
+  visibilityCheck() {
+    return this.currentData() === this.permission.get();
+  },
+
+  setPermission(permission) {
+    this.permission.set(permission);
+    this.permissionMenuIsOpen.set(false);
+  },
+
+  togglePermissionMenu() {
+    this.permissionMenuIsOpen.set(!this.permissionMenuIsOpen.get());
+  },
+
   events() {
     return [{
       'click .js-change-permission': this.togglePermissionMenu,
       'click .js-select-permission'() {
+<<<<<<< HEAD
         this.setPermission(this.currentData());
+=======
+        this.setVisibility(this.currentData());
+>>>>>>> fix bug
       },
       submit(evt) {
         evt.preventDefault();
         var permission = this.permission.get();
+<<<<<<< HEAD
         const titleInput =  this.find('.list-name-input');
         const title = titleInput.value.trim();
         if (title) {
+=======
+        const title = this.find('.list-name-input');
+        if ($.trim(title.value)) {
+>>>>>>> fix bug
           Lists.insert({
             title,
             boardId: Session.get('currentBoard'),

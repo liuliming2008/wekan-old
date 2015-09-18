@@ -67,6 +67,7 @@ class SetFilter {
 
 class RegexFilter {
 <<<<<<< HEAD
+<<<<<<< HEAD
   constructor(checked) {
     this._dep = new Tracker.Dependency();
     this._regex = '';
@@ -77,6 +78,12 @@ class RegexFilter {
     this._regex = '';
     this._checked = false;
 >>>>>>> add votes
+=======
+  constructor(checked) {
+    this._dep = new Tracker.Dependency();
+    this._regex = '';
+    this._checked = checked ? checked:false;
+>>>>>>> fix bug
   }
 
   get() {
@@ -95,18 +102,26 @@ class RegexFilter {
 
   checked(){
 <<<<<<< HEAD
+<<<<<<< HEAD
     this._dep.depend();
 =======
 >>>>>>> add votes
+=======
+    this._dep.depend();
+>>>>>>> fix bug
     return this._checked;
   }
 
   toogleChecked(){
     this._checked = ! this._checked;
 <<<<<<< HEAD
+<<<<<<< HEAD
     this._dep.changed();
 =======
 >>>>>>> add votes
+=======
+    this._dep.changed();
+>>>>>>> fix bug
   }
 
   _isActive() {
@@ -131,10 +146,14 @@ Filter = {
   labelIds: new SetFilter(),
   members: new SetFilter(),
 <<<<<<< HEAD
+<<<<<<< HEAD
   title: new RegexFilter(true),
 =======
   title: new RegexFilter(),
 >>>>>>> add votes
+=======
+  title: new RegexFilter(true),
+>>>>>>> fix bug
   description: new RegexFilter(),
 
   _fields: ['labelIds', 'members', 'title', 'description'],
@@ -197,7 +216,7 @@ Filter = {
     const filterSelectorRegex = new Array();
     _.forEach(this._fields_regex, (fieldName) => {
       const filter = this[fieldName];
-      if (filter._isActive())
+      if (filter._isActive() && filter.checked())
       {
         //filterSelectorRegex.push({''+fieldName: {$regex:'.*'+filter.get()+'.*', $options: ''}});
         var selector = {};

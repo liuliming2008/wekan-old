@@ -41,6 +41,23 @@ Utils = {
     return base;
   },
 
+// Determine the new sort index
+  calculateSort(type, listId){
+    var base = 0;
+    var increment = 1;
+    if( Cards.find({listId:listId}).count() === 0){
+      base = 0;
+    } 
+    if( type === "top" ){
+      var topsort = Cards.find({listId:listId}).fetch()[0].sort;
+      base = topsort - 1;
+    }
+    else if( type === "bottom" ){
+      var topsort = Cards.find({listId:listId}).fetch()[Cards.find({listId:listId}).count()-1].sort;
+      base = topsort - 1;    
+    }
+    return base;
+  },
   // Determine the new sort index
   calculateIndex(prevCardDomElement, nextCardDomElement, nCards = 1) {
     let base, increment;
@@ -74,6 +91,7 @@ Utils = {
   },
   compareDay: function(start, end) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     var starttime = new Date(start.getFullYear(), start.getMonth(), start.getDate());
     var starttimes = starttime.getTime();
@@ -91,18 +109,27 @@ Utils = {
 =======
     var arr = start.toString().split("-");
     var starttime = new Date(arr[0], arr[1], arr[2]);
+=======
+    
+    var starttime = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+>>>>>>> fix bug
     var starttimes = starttime.getTime();
 
-    var arrs = end.toString().split("-");
-    var lktime = new Date(arrs[0], arrs[1], arrs[2]);
+    var lktime = new Date(end.getFullYear(), end.getMonth(), end.getDate());
     var lktimes = lktime.getTime();
 
-    if (starttimes >= lktimes) {
-        return true;
+    if (starttimes === lktimes) {
+      return 0;
     }
+    else if (starttimes > lktimes) 
+      return 1;
     else
+<<<<<<< HEAD
         return false;
 >>>>>>> add votes
+=======
+      return -1;
+>>>>>>> fix bug
 
   },
 };
