@@ -7,6 +7,7 @@ template(name="orgsLayout")
     +header
     #orgs-content
       +Template.dynamic(template=content)
+<<<<<<< HEAD
     if (Modal.isOpen)
       #modal
         .overlay
@@ -14,6 +15,15 @@ template(name="orgsLayout")
           a.modal-close-btn.js-close-modal
             i.fa.fa-times-thin
           +Template.dynamic(template=Modal.getTemplateName)  
+=======
+      if (Modal.isOpen)
+    #modal
+      .overlay
+      .modal-content
+        a.modal-close-btn.js-close-modal
+          i.fa.fa-times-thin
+        +Template.dynamic(template=Modal.getTemplateName)
+>>>>>>> code standard
 
 
 template(name="organization")
