@@ -25,6 +25,7 @@ CardComments.attachSchema(new SimpleSchema({
 
 CardComments.allow({
   insert(userId, doc) {
+<<<<<<< HEAD
     // // todo: separate permision for list comment, chat last condition to Meteor.user().isBoardMember(doc.boardId)))
     if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
       return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
@@ -32,6 +33,15 @@ CardComments.allow({
       if( ( Cards.findOne(doc.cardId).list().permission === 'admn' &&Meteor.user().isBoardAdmin(doc.boardId) )||
         ( Cards.findOne(doc.cardId).list().permission === 'registered' && Meteor.user()) || 
         ( Cards.findOne(doc.cardId).list().permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
+=======
+    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
+      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
+      if( Meteor.user().isBoardAdmin(doc.boardId) )
+        return true;
+      else if( ( Cards.findOne(cardId).list().permission === 'registered' && Meteor.user()) || 
+        ( Cards.findOne(cardId).list().permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
+>>>>>>> merge wekan
         return true;
       else
         return false;
@@ -61,7 +71,10 @@ CardComments.before.insert((userId, doc) => {
 
 if (Meteor.isServer) {
   CardComments.after.insert((userId, doc) => {
+<<<<<<< HEAD
     Cards.update(doc.cardId,{$set: {dateLastActivity: new Date()}});
+=======
+>>>>>>> merge wekan
     Activities.insert({
       userId,
       activityType: 'addComment',

@@ -41,8 +41,12 @@ FlowRouter.route('/b/:id/:slug', {
     Session.set('currentOrganizationShortName', null);
     Session.set('currentBoard', currentBoard);
     Session.set('currentCard', null);
+<<<<<<< HEAD
     Session.set('currentBoardSort', null);
     Session.set('previousURL', FlowRouter.current().path);
+=======
+    Session.get('currentBoardSort', null);
+>>>>>>> merge wekan
 
     // If we close a card, we'll execute again this route action but we don't
     // want to excape every current actions (filters, etc.)

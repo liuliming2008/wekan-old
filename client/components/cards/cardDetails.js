@@ -55,6 +55,7 @@ BlazeComponent.extendComponent({
     this.parentComponent().showOverlay.set(false);
   },
 
+<<<<<<< HEAD
   descEditable(){
     if( this.data().list().board().isPublic() || this.data().list().board().isPrivate() ){
       if( Meteor.user() && Meteor.user().isBoardMember() )
@@ -95,6 +96,8 @@ BlazeComponent.extendComponent({
       return false;
   },
 
+=======
+>>>>>>> merge wekan
   descEditable(){
     if( this.data().list().board().isPublic() || this.data().list().board().isPrivate() ){
       if( Meteor.user().isBoardMember() )
@@ -148,8 +151,13 @@ BlazeComponent.extendComponent({
       },
       'submit .js-card-details-title'(evt) {
         evt.preventDefault();
+<<<<<<< HEAD
         const title = this.currentComponent().getValue().trim();
         if (title) {
+=======
+        const title = this.currentComponent().getValue();
+        if ($.trim(title)) {
+>>>>>>> merge wekan
           this.data().setTitle(title);
         }
       },

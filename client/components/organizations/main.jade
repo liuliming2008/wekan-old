@@ -9,6 +9,7 @@ template(name="orgsLayout")
       +Template.dynamic(template=content)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (Modal.isOpen)
       #modal
         .overlay
@@ -30,10 +31,14 @@ template(name="orgsLayout")
 >>>>>>> code standard
 =======
 >>>>>>> follow code standard
+=======
+      
+>>>>>>> merge wekan
 
 
 template(name="organization")
   if isOrgReady.get
+<<<<<<< HEAD
     if currentUser
       if currentOrganization
         .org
@@ -69,6 +74,33 @@ template(name="organization")
       else
         //- XXX We need a better error message in case the board has been archived
         +message(label="organization-not-found")
+=======
+    if currentOrganization
+      .org
+        .header
+          .header-wrapper.u-clearfix
+            .org-name
+              h1 {{currentOrganization.title}}
+            .org-desc
+              span {{currentOrganization.description}}
+        .nav
+        .main.u-clearfix
+          .main-wrapper
+            .window-module 
+              .org-members-options
+                if currentUser.isOrganizationAdmin
+                  a.button-link.js-manage-org-members 
+                    i.fa.fa-plus 
+                    | {{_ "Add Memebers"}}
+                    
+            hr
+            .window-module.js-member-list
+                each currentOrganization.members
+                  +userCard(user=this org=currentOrganization)
+    else
+      //- XXX We need a better error message in case the board has been archived
+      +message(label="organization-not-found")
+>>>>>>> merge wekan
   else
     +spinner
 

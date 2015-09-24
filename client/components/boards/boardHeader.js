@@ -6,7 +6,10 @@ Template.boardMenuPopup.events({
   },
   'click .js-change-board-color': Popup.open('boardChangeColor'),
   'click .js-change-language': Popup.open('changeLanguage'),
+<<<<<<< HEAD
   'click .js-invite-emails-for-board': Popup.open('inviteEmailsForBoard'),
+=======
+>>>>>>> merge wekan
   'click .js-archive-board ': Popup.afterConfirm('archiveBoard', function() {
     const currentBoard = Boards.findOne(Session.get('currentBoard'));
     currentBoard.archive();

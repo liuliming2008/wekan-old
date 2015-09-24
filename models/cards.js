@@ -58,6 +58,9 @@ Cards.attachSchema(new SimpleSchema({
 }));
 
 <<<<<<< HEAD:models/cards.js
+<<<<<<< HEAD:models/cards.js
+=======
+>>>>>>> merge wekan:models/cards.js
 Cards.allow({
   insert(userId, doc) {
     if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
@@ -65,12 +68,18 @@ Cards.allow({
     else if( Boards.findOne(doc.boardId).isCollaborate() ) {
       if( Meteor.user().isBoardAdmin(doc.boardId) )
         return true;
+<<<<<<< HEAD:models/cards.js
       else if( ( Lists.findOne(doc.listId).permission === 'registered' && Meteor.user()) || 
         ( Lists.findOne(doc.listId).permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
+=======
+      else if( ( this.list().permission === 'registered' && Meteor.user()) || 
+        ( this.list().permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
+>>>>>>> merge wekan:models/cards.js
         return true;
       else
         return false;
     }
+<<<<<<< HEAD:models/cards.js
   },
   update(userId, doc) {
     if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
@@ -109,17 +118,34 @@ CardComments.attachSchema(new SimpleSchema({
   // XXX Rename in `content`? `text` is a bit vague...
   text: {
     type: String,
+=======
+>>>>>>> merge wekan:models/cards.js
   },
-  // XXX We probably don't need this information here, since we already have it
-  // in the associated comment creation activity
-  createdAt: {
-    type: Date,
-    denyUpdate: false,
+  update(userId, doc) {
+    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
+      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
+      if( Meteor.user().isBoardAdmin(doc.boardId) )
+        return true;
+      else if( userId === doc.userId)
+        return true;
+      else
+        return false;
+    }      
   },
-  // XXX Should probably be called `authorId`
-  userId: {
-    type: String,
+  remove(userId, doc) {
+    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
+      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
+      if( Meteor.user().isBoardAdmin(doc.boardId) )
+        return true;
+      else if( userId === doc.userId)
+        return true;
+      else
+        return false;
+    }
   },
+<<<<<<< HEAD:models/cards.js
 }));
 
 if (Meteor.isServer) {
@@ -188,6 +214,10 @@ if (Meteor.isServer) {
   });
 }
 >>>>>>> fix bug:collections/cards.js
+=======
+  fetch: ['boardId'],
+});
+>>>>>>> merge wekan:models/cards.js
 
 Cards.helpers({
   list() {
@@ -317,12 +347,19 @@ Cards.mutations({
 Cards.before.insert((userId, doc) => {
   doc.createdAt = new Date();
   doc.dateLastActivity = new Date();
+<<<<<<< HEAD:models/cards.js
   if(!doc.hasOwnProperty('archived')){
     doc.archived = false;
   }
   doc.votes = 0;
 
   if (!doc.userId) {
+=======
+  doc.archived = false;
+  doc.votes = 0;
+
+  if (!doc.userId) 
+>>>>>>> merge wekan:models/cards.js
     doc.userId = userId;
   }
 });

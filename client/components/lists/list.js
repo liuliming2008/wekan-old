@@ -249,6 +249,7 @@ BlazeComponent.extendComponent({
           // Blaze with the below query.
           $cards.sortable('cancel');
 
+<<<<<<< .mine
           if (MultiSelection.isActive()) {
             Cards.find(MultiSelection.getMongoSelector()).forEach((c, i) => {
               Cards.update(c._id, {
@@ -267,6 +268,26 @@ BlazeComponent.extendComponent({
                 sort: sortIndex.base,
               },
             });
+=======
+        if (MultiSelection.isActive()) {
+          Cards.find(MultiSelection.getMongoSelector()).forEach((card, i) => {
+            card.move(listId, sortIndex.base + i * sortIndex.increment);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
           }
           boardComponent.setIsDragging(false);
         },
@@ -291,6 +312,7 @@ BlazeComponent.extendComponent({
           const currentBoardId = Tracker.nonreactive(() => {
             return Session.get('currentBoard');
           });
+<<<<<<< .mine
           Cards.find({ boardId: currentBoardId }).fetch();
           //f( Session.get('currentBoardSort') === 'sort' || ! Session.get('currentBoardSort') )
           Tracker.afterFlush(function() {
@@ -300,6 +322,17 @@ BlazeComponent.extendComponent({
               drop(event, ui) {
                 const cardId = Blaze.getData(this)._id;
                 let addToSet;
+=======
+        } else {
+          const cardDomElement = ui.item.get(0);
+          const card = Blaze.getData(cardDomElement);
+          card.move(listId, sortIndex.base);
+        }
+        boardComponent.setIsDragging(false);
+      },
+    });
+
+>>>>>>> .theirs
 
                 if (ui.draggable.hasClass('js-member')) {
                   const memberId = Blaze.getData(ui.draggable.get(0)).userId;
@@ -316,8 +349,48 @@ BlazeComponent.extendComponent({
         
 >>>>>>> fix bug
       });
+<<<<<<< .mine
     }
     
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+      Cards.find({ boardId: currentBoardId }).fetch();
+      Tracker.afterFlush(() => {
+        $cards.find(itemsSelector).droppable({
+          hoverClass: 'draggable-hover-card',
+          accept: '.js-member,.js-label',
+          drop(event, ui) {
+            const cardId = Blaze.getData(this)._id;
+            const card = Cards.findOne(cardId);
+
+            if (ui.draggable.hasClass('js-member')) {
+              const memberId = Blaze.getData(ui.draggable.get(0)).userId;
+              card.assignMember(memberId);
+            } else {
+              const labelId = Blaze.getData(ui.draggable.get(0))._id;
+              card.addLabel(labelId);
+            }
+          },
+        });
+      });
+    });
+>>>>>>> .theirs
   },
 }).register('list');

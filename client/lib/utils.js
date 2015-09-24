@@ -22,6 +22,7 @@ Utils = {
     return string.charAt(0).toUpperCase() + string.slice(1);
   },
 
+<<<<<<< HEAD
   // Determine the new sort index of new created cards
   // dont use calculateIndex 
   calculateSort(type, listId){
@@ -41,6 +42,8 @@ Utils = {
     return base;
   },
 
+=======
+>>>>>>> merge wekan
   // Determine the new sort index of new created cards
   // dont use calculateIndex 
   calculateSort(type, listId){
