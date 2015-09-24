@@ -57,10 +57,6 @@ Cards.attachSchema(new SimpleSchema({
   },
 }));
 
-<<<<<<< HEAD:models/cards.js
-<<<<<<< HEAD:models/cards.js
-=======
->>>>>>> merge wekan:models/cards.js
 Cards.allow({
   insert(userId, doc) {
     if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
@@ -68,18 +64,12 @@ Cards.allow({
     else if( Boards.findOne(doc.boardId).isCollaborate() ) {
       if( Meteor.user().isBoardAdmin(doc.boardId) )
         return true;
-<<<<<<< HEAD:models/cards.js
       else if( ( Lists.findOne(doc.listId).permission === 'registered' && Meteor.user()) || 
         ( Lists.findOne(doc.listId).permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
-=======
-      else if( ( this.list().permission === 'registered' && Meteor.user()) || 
-        ( this.list().permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
->>>>>>> merge wekan:models/cards.js
         return true;
       else
         return false;
     }
-<<<<<<< HEAD:models/cards.js
   },
   update(userId, doc) {
     if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
@@ -107,117 +97,6 @@ Cards.allow({
   },
   fetch: ['boardId'],
 });
-=======
-CardComments.attachSchema(new SimpleSchema({
-  boardId: {
-    type: String,
-  },
-  cardId: {
-    type: String,
-  },
-  // XXX Rename in `content`? `text` is a bit vague...
-  text: {
-    type: String,
-=======
->>>>>>> merge wekan:models/cards.js
-  },
-  update(userId, doc) {
-    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
-      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
-    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
-      if( Meteor.user().isBoardAdmin(doc.boardId) )
-        return true;
-      else if( userId === doc.userId)
-        return true;
-      else
-        return false;
-    }      
-  },
-  remove(userId, doc) {
-    if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
-      return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
-    else if( Boards.findOne(doc.boardId).isCollaborate() ) {
-      if( Meteor.user().isBoardAdmin(doc.boardId) )
-        return true;
-      else if( userId === doc.userId)
-        return true;
-      else
-        return false;
-    }
-  },
-<<<<<<< HEAD:models/cards.js
-}));
-
-if (Meteor.isServer) {
-  Cards.allow({
-    insert(userId, doc) {
-      if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
-        return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
-      else if( Boards.findOne(doc.boardId).isCollaborate() ) {
-        if( Meteor.user().isBoardAdmin(doc.boardId) )
-          return true;
-        else if( ( this.list().permission === 'registered' && Meteor.user()) || 
-          ( this.list().permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
-          return true;
-        else
-          return false;
-      }
-    },
-    update(userId, doc) {
-      if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
-        return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
-      else if( Boards.findOne(doc.boardId).isCollaborate() ) {
-        if( Meteor.user().isBoardAdmin(doc.boardId) )
-          return true;
-        else if( userId === doc.userId)
-          return true;
-        else
-          return false;
-      }      
-    },
-    remove(userId, doc) {
-      if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
-        return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
-      else if( Boards.findOne(doc.boardId).isCollaborate() ) {
-        if( Meteor.user().isBoardAdmin(doc.boardId) )
-          return true;
-        else if( userId === doc.userId)
-          return true;
-        else
-          return false;
-      }
-    },
-    fetch: ['boardId'],
-  });
-
-  CardComments.allow({
-    insert(userId, doc) {
-      if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
-        return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
-      else if( Boards.findOne(doc.boardId).isCollaborate() ) {
-        if( Meteor.user().isBoardAdmin(doc.boardId) )
-          return true;
-        else if( ( Cards.findOne(cardId).list().permission === 'registered' && Meteor.user()) || 
-          ( Cards.findOne(cardId).list().permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
-          return true;
-        else
-          return false;
-      } 
-    },
-    update(userId, doc) {
-      return userId === doc.userId;
-    },
-    remove(userId, doc) {
-      return userId === doc.userId;
-    },
-    fetch: ['userId', 'boardId'],
-  });
-}
->>>>>>> fix bug:collections/cards.js
-=======
-  fetch: ['boardId'],
-});
->>>>>>> merge wekan:models/cards.js
 
 Cards.helpers({
   list() {
@@ -347,19 +226,12 @@ Cards.mutations({
 Cards.before.insert((userId, doc) => {
   doc.createdAt = new Date();
   doc.dateLastActivity = new Date();
-<<<<<<< HEAD:models/cards.js
   if(!doc.hasOwnProperty('archived')){
     doc.archived = false;
   }
   doc.votes = 0;
 
   if (!doc.userId) {
-=======
-  doc.archived = false;
-  doc.votes = 0;
-
-  if (!doc.userId) 
->>>>>>> merge wekan:models/cards.js
     doc.userId = userId;
   }
 });
