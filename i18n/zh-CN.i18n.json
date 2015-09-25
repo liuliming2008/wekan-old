@@ -274,6 +274,7 @@
     "list-permission-registered-desc": "注册用户可编辑添加内容",
     "set-list-permission": "权限",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "login-to-comment": "<a href='%s'>登录</a>后发表评论",
     "login-to-vote": "<a href='%s'>登录</a>后才能投票",
     "app-page-title": "思奇 -  清单管理云平台  实时 - 无刷新  简单 - 全拖拽",
@@ -304,5 +305,9 @@
     "suggest": "建议和联系我们",
 =======
 >>>>>>> fix bug
+=======
+    "login-to-comment": "<a href='%s'>登录</a>后发表评论",
+    "login-to-vote": "<a href='%s'>登录</a>后才能投票",
+>>>>>>> lead to login for unloged suer
     "none": "无"
 }

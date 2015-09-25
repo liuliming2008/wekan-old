@@ -57,7 +57,12 @@ BlazeComponent.extendComponent({
   },
 
 
+<<<<<<< HEAD
   addCard: function(evt) {   
+=======
+  addCard: function(evt) {
+    if(!Meteor.user()) FlowRouter.go("/login");
+>>>>>>> lead to login for unloged suer
     evt.preventDefault();
     var textarea = $(evt.currentTarget).find('textarea');
     var title = textarea.val();

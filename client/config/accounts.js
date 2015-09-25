@@ -31,6 +31,7 @@ AccountsTemplates.configureRoute('changePwd', {
 
 Accounts.onLogin(function() {
   var path = FlowRouter.current().path;
+<<<<<<< HEAD
   // It seems that meteor has done this, we only do it if the user is in the login page
   // if(path === "/sign-in"){
   //   FlowRouter.go(Session.get("previousURL"));
@@ -55,3 +56,25 @@ Meteor.startup(() => {
     T9n.setLanguage(language.replace(/-/,"_").toLowerCase());
   }
 });
+=======
+  // we only do it if the user is in the login page
+  if(path === "/login"){
+    FlowRouter.go(Session.get("previousURL"));
+  }
+});
+
+// Accounts.onLogin(function() {
+//  var currentUser = Meteor.user();
+//   if (currentUser) {
+//     language = currentUser.profile && currentUser.profile.language;
+//   } 
+//   if (!language) {
+//     language =  window.navigator.userLanguage || window.navigator.language || 'en';  
+//     Users.update(Meteor.userId(), {
+//       $set: {
+//         'profile.language': language
+//       }
+//     });  
+//   }
+// });
+>>>>>>> lead to login for unloged suer

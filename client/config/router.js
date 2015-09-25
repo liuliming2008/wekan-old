@@ -46,7 +46,11 @@ FlowRouter.route('/b/:id/:slug', {
     Session.set('previousURL', FlowRouter.current().path);
 =======
     Session.get('currentBoardSort', null);
+<<<<<<< HEAD
 >>>>>>> merge wekan
+=======
+    Session.set('previousURL', FlowRouter.current().path);
+>>>>>>> lead to login for unloged suer
 
     // If we close a card, we'll execute again this route action but we don't
     // want to excape every current actions (filters, etc.)
@@ -68,7 +72,10 @@ FlowRouter.route('/b/:boardId/:slug/:cardId', {
     Session.set('currentOrganizationShortName', null);
     Session.set('currentBoard', params.boardId);
     Session.set('currentCard', params.cardId);
+<<<<<<< HEAD
     //Session.set('cardURL', FlowRouter.current().path);
+=======
+>>>>>>> lead to login for unloged suer
     Session.set('previousURL', FlowRouter.current().path);
 
     BlazeLayout.render('defaultLayout', { content: 'board' });

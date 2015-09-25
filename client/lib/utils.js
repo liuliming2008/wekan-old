@@ -24,6 +24,7 @@ Utils = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   // Determine the new sort index of new created cards
   // dont use calculateIndex 
   calculateSort(type, listId){
@@ -48,6 +49,8 @@ Utils = {
 =======
 <<<<<<< .mine
 >>>>>>> merge wekan
+=======
+>>>>>>> lead to login for unloged suer
   // Determine the new sort index of new created cards
   // dont use calculateIndex 
   calculateSort(type, listId){
@@ -66,26 +69,7 @@ Utils = {
     }
     return base;
   },
-=======
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
   // Determine the new sort index
   calculateIndex(prevCardDomElement, nextCardDomElement, nCards = 1) {
     let base, increment;

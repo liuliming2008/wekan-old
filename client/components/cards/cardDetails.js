@@ -168,12 +168,17 @@ BlazeComponent.extendComponent({
         this.parentComponent().showOverlay.set(true);
         this.parentComponent().mouseHasEnterCardDetails = true;
       },
+<<<<<<< HEAD
       'click .js-vote-card'(evt) {
         if(!Meteor.user()) {
           evt.preventDefault();
           FlowRouter.go("/sign-in");
           return;
         }
+=======
+      'click .js-vote-card'() {
+        if(!Meteor.user()) FlowRouter.go("/login");
+>>>>>>> lead to login for unloged suer
         Meteor.user().voteCard(this.currentData()._id);
         //Users.update(Meteor.UserId(),{$addToSet: {profile.votedCards: this.currentData()._id}});
       },

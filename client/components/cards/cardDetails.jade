@@ -76,6 +76,7 @@ template(name="cardDetails")
     hr
     h2 {{ _ 'activity'}}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> fix bug
@@ -85,6 +86,13 @@ template(name="cardDetails")
       if showCommentForm
         +commentForm
 
+=======
+    if currentUser
+      if canComment
+        +commentForm
+    else
+      span {{_ 'login-to-comment' '/login'}}
+>>>>>>> lead to login for unloged suer
     if isLoaded.get
       +activities(card=this mode="card")
 
