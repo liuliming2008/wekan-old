@@ -42,6 +42,7 @@ FlowRouter.route('/b/:id/:slug', {
     Session.set('currentBoard', currentBoard);
     Session.set('currentCard', null);
 <<<<<<< HEAD
+<<<<<<< HEAD
     Session.set('currentBoardSort', null);
     Session.set('previousURL', FlowRouter.current().path);
 =======
@@ -49,6 +50,9 @@ FlowRouter.route('/b/:id/:slug', {
 <<<<<<< HEAD
 >>>>>>> merge wekan
 =======
+=======
+    Session.set('currentBoardSort', null);
+>>>>>>> fix route and unsaved of anonymous
     Session.set('previousURL', FlowRouter.current().path);
 >>>>>>> lead to login for unloged suer
 
@@ -73,9 +77,13 @@ FlowRouter.route('/b/:boardId/:slug/:cardId', {
     Session.set('currentBoard', params.boardId);
     Session.set('currentCard', params.cardId);
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Session.set('cardURL', FlowRouter.current().path);
 =======
 >>>>>>> lead to login for unloged suer
+=======
+    //Session.set('cardURL', FlowRouter.current().path);
+>>>>>>> fix route and unsaved of anonymous
     Session.set('previousURL', FlowRouter.current().path);
 
     BlazeLayout.render('defaultLayout', { content: 'board' });

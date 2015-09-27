@@ -232,8 +232,11 @@ BlazeComponent.extendComponent({
     this.permissionMenuIsOpen.set(!this.permissionMenuIsOpen.get());
   },
 
-  onCreated() {
-    this.permissionMenuIsOpen = new ReactiveVar(false);
+  onRendered() {
+    this.updatePermission();
+  },
+
+  updatePermission(){
     const currentBoard = Boards.findOne(Session.get('currentBoard'));
     if( currentBoard.isCollaborate() && currentBoard.lists().count() === 0 )
       this.permission = new ReactiveVar('registered');
@@ -243,7 +246,11 @@ BlazeComponent.extendComponent({
       this.permission = new ReactiveVar('member'); 
   },
 
-  visibilityCheck() {
+  onCreated() {
+    this.permissionMenuIsOpen = new ReactiveVar(false);
+  },
+
+  permissionCheck() {
     return this.currentData() === this.permission.get();
   },
 
@@ -261,10 +268,14 @@ BlazeComponent.extendComponent({
       'click .js-change-permission': this.togglePermissionMenu,
       'click .js-select-permission'() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.setPermission(this.currentData());
 =======
         this.setVisibility(this.currentData());
 >>>>>>> fix bug
+=======
+        this.setPermission(this.currentData());
+>>>>>>> fix route and unsaved of anonymous
       },
       submit(evt) {
         evt.preventDefault();
@@ -283,8 +294,15 @@ BlazeComponent.extendComponent({
             sort: $('.list').length,
             permission: permission,
           });
+<<<<<<< HEAD
           titleInput.value = '';
           titleInput.focus();
+=======
+
+          this.updatePermission();
+          title.value = '';
+          title.focus();
+>>>>>>> fix route and unsaved of anonymous
         }
       },
     }];

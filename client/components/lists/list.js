@@ -17,6 +17,9 @@ BlazeComponent.extendComponent({
   allowAddCard: function(){
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix route and unsaved of anonymous
     if(Meteor.user() &&  Meteor.user().isBoardMember() )
       return true;
     else if( this.data().board().isCollaborate() && (
@@ -30,6 +33,7 @@ BlazeComponent.extendComponent({
   },
   showLoginToAddCard(){
     if( this.data().board().isCollaborate() && this.data().permission === 'registered')
+<<<<<<< HEAD
       return true;
 =======
     if ( this.data().board().isPublic() || this.data().board().isPrivate() ){
@@ -50,6 +54,8 @@ BlazeComponent.extendComponent({
 >>>>>>> fix bug
 =======
     if(Meteor.user().isBoardMember() || this.data().board().isCollaborate())
+=======
+>>>>>>> fix route and unsaved of anonymous
       return true;
 >>>>>>> merge wekan
     else
@@ -58,11 +64,15 @@ BlazeComponent.extendComponent({
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   addCard: function(evt) {   
 =======
   addCard: function(evt) {
     if(!Meteor.user()) FlowRouter.go("/login");
 >>>>>>> lead to login for unloged suer
+=======
+  addCard: function(evt) {   
+>>>>>>> fix route and unsaved of anonymous
     evt.preventDefault();
     var textarea = $(evt.currentTarget).find('textarea');
     var title = textarea.val();

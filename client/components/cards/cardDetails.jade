@@ -77,6 +77,7 @@ template(name="cardDetails")
     h2 {{ _ 'activity'}}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> fix bug
@@ -93,6 +94,15 @@ template(name="cardDetails")
     else
       span {{_ 'login-to-comment' '/login'}}
 >>>>>>> lead to login for unloged suer
+=======
+
+    if canComment
+      +commentForm
+    else
+      if showCommentForm
+        +commentForm
+
+>>>>>>> fix route and unsaved of anonymous
     if isLoaded.get
       +activities(card=this mode="card")
 

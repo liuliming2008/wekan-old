@@ -23,14 +23,20 @@ BlazeComponent.extendComponent({
 
   addCard(evt) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix route and unsaved of anonymous
     if(!Meteor.user()) {
       FlowRouter.go("atSignIn");
       FlowRouter.reload();
       return;
     }   
+<<<<<<< HEAD
 =======
     if(!Meteor.user()) FlowRouter.go("/login");
 >>>>>>> lead to login for unloged suer
+=======
+>>>>>>> fix route and unsaved of anonymous
     evt.preventDefault();
     const firstCardDom = this.find('.js-minicard:first');
     const lastCardDom = this.find('.js-minicard:last');

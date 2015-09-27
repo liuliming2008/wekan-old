@@ -25,7 +25,10 @@ CardComments.attachSchema(new SimpleSchema({
 
 CardComments.allow({
   insert(userId, doc) {
+<<<<<<< HEAD
     // // todo: separate permision for list comment, chat last condition to Meteor.user().isBoardMember(doc.boardId)))
+=======
+>>>>>>> fix route and unsaved of anonymous
     if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
       return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
     else if( Boards.findOne(doc.boardId).isCollaborate() ) {
