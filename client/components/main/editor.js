@@ -54,6 +54,7 @@ const at = HTML.CharRef({html: '&commat;', str: '@'});
 Blaze.Template.registerHelper('mentions', new Template('mentions', function() {
   const view = this;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   if( !Session.get('currentBoard') ) return;
@@ -62,6 +63,12 @@ Blaze.Template.registerHelper('mentions', new Template('mentions', function() {
   
   if( !currentBoard ) return;
   const knowedUsers = currentBoard.members.map((member) => {
+=======
+
+  const currentBoard = Boards.findOne(Session.get('currentBoard'));
+  if( !currentBoard ) return;
+  const knowedUsers = _.map(currentBoard.members, (member) => {
+>>>>>>> fix
     member.username = Users.findOne(member.userId).username;
     return member;
   });

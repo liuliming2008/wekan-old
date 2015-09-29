@@ -182,6 +182,7 @@ BlazeComponent.extendComponent({
        { members:{ $elemMatch: { userId: Meteor.userId(), isAdmin: true } } }
     )
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // let args = [];
     // let userId  = Meteor.userId();
@@ -197,6 +198,8 @@ BlazeComponent.extendComponent({
     // });
     // return orgs;
 >>>>>>> fix permission
+=======
+>>>>>>> fix
   },
 
   isCurrentOrg: function(id){

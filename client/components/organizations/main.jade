@@ -94,6 +94,7 @@ template(name="organization")
                   each currentOrganization.members
                     +userCard(user=this org=currentOrganization)
 <<<<<<< HEAD
+<<<<<<< HEAD
       else
         //- XXX We need a better error message in case the board has been archived
         +message(label="organization-not-found")
@@ -129,6 +130,11 @@ template(name="organization")
           //- XXX We need a better error message in case the board has been archived
           +message(label="organization-not-found")
 >>>>>>> fix permission
+=======
+      else
+        //- XXX We need a better error message in case the board has been archived
+        +message(label="organization-not-found")
+>>>>>>> fix
   else
     +spinner
 

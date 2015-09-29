@@ -273,7 +273,6 @@
     "list-permission-registered": "Registed",
     "list-permission-registered-desc": "Registed user can add and edit content, will automatically become member after actions",
     "set-list-permission": "Permission",   
-<<<<<<< HEAD
     "login-to-comment": "<a href='%s'>Login</a> to comment",
     "login-to-vote": "<a href='%s'>Login</a> to vote",
     "app-page-title": "Smoch",
@@ -302,20 +301,5 @@
     "createOrgPopup-title": "Create Organization",
     "creator": "Creator",   
     "suggest": "Suggest",
-=======
-    "app-name": "App Name",
-    "app-description": "App description",
-    "login-to-comment": "<a href='%s'>Login</a> to comment",
-    "login-to-vote": "<a href='%s'>Login</a> to vote",
-    "app-page-title": "App title",
-    "header-app-name": "App Name",
-    "header-app-description": "App description",
-    "login-app-name": "App Name",
-    "login-app-description": "App description",
-    "member": "Member",
-    "Members": "Members",
-    "add-member": "Add Member",
-    "initials": "头像字母",
->>>>>>> fix permission
     "none": "None"
 }
