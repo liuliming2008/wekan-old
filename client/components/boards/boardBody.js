@@ -108,11 +108,7 @@ Template.boardBody.helpers({
   canAddList(){
     const currentBoard = Boards.findOne(Session.get('currentBoard'));
     if ( ( !currentBoard.isCollaborate() && Meteor.user() && Meteor.user().isBoardMember())||
-<<<<<<< HEAD
       (currentBoard.isCollaborate() && Meteor.user() && Meteor.user().isBoardAdmin()))
-=======
-      (currentBoard.isCollaborate() && Meteor.user().isBoardAdmin()))
->>>>>>> fix
       return true;
     else 
       return false;
@@ -236,90 +232,26 @@ BlazeComponent.extendComponent({
     this.permissionMenuIsOpen.set(!this.permissionMenuIsOpen.get());
   },
 
-  onRendered() {
-    // this.updatePermission();
-
-  },
-
-  updatePermission(){
-    
-  },
-
-  onCreated() {
-    this.permissionMenuIsOpen = new ReactiveVar(false);
-    const currentBoard = Boards.findOne(Session.get('currentBoard'));
-    if( currentBoard.isCollaborate() && currentBoard.lists().count() === 0 )
-      this.permission = new ReactiveVar('registered');
-    else if( currentBoard.isCollaborate() )
-      this.permission = new ReactiveVar('admin');
-    else
-      this.permission = new ReactiveVar('member'); 
-    this.autorun(() => {
-      const currentBoard = Boards.findOne(Session.get('currentBoard'));
-      if( currentBoard.isCollaborate() && currentBoard.lists().count() === 0 )
-        this.setPermission('registered');
-      else if( currentBoard.isCollaborate() )
-        this.setPermission('admin');
-      else
-        this.setPermission('member'); 
-    });
-  },
-
-  
-
-  permissionCheck() {
-    return this.currentData() === this.permission.get();
-  },
-
-  setPermission(permission) {
-    this.permission.set(permission);
-    this.permissionMenuIsOpen.set(false);
-  },
-
-  togglePermissionMenu() {
-    this.permissionMenuIsOpen.set(!this.permissionMenuIsOpen.get());
-  },
-
   events() {
     return [{
       'click .js-change-permission': this.togglePermissionMenu,
       'click .js-select-permission'() {
-<<<<<<< HEAD
-<<<<<<< HEAD
         this.setPermission(this.currentData());
-=======
-        this.setVisibility(this.currentData());
->>>>>>> fix bug
-=======
-        this.setPermission(this.currentData());
->>>>>>> fix route and unsaved of anonymous
       },
       submit(evt) {
         evt.preventDefault();
         var permission = this.permission.get();
-<<<<<<< HEAD
         const titleInput =  this.find('.list-name-input');
         const title = titleInput.value.trim();
         if (title) {
-=======
-        const title = this.find('.list-name-input');
-        if ($.trim(title.value)) {
->>>>>>> fix bug
           Lists.insert({
             title,
             boardId: Session.get('currentBoard'),
             sort: $('.list').length,
             permission: permission,
           });
-<<<<<<< HEAD
           titleInput.value = '';
           titleInput.focus();
-=======
-
-          this.updatePermission();
-          title.value = '';
-          title.focus();
->>>>>>> fix route and unsaved of anonymous
         }
       },
     }];
