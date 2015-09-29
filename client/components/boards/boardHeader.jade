@@ -189,7 +189,7 @@ template(name="createBoardPopup")
         span.org-member-auto-join-text {{_ 'org-member-auto-join-description'}}       
 =======
       select(name="org-id" class="org-sel")
-        option(value='' selected="{{#if isCurrentOrg ''}}selected{{/if}}") {{_ 'none'}} 
+        option(value='' selected="{{#if isCurrentOrg }}selected{{/if}}") {{_ 'none'}} 
         if canCreateBoardOrgs.count  
           each canCreateBoardOrgs
             if currentUser.isOrganizationAdmin _id

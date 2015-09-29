@@ -9,29 +9,6 @@ AccountsTemplates.addFields([{
   minLength: 2,
 }, emailField, passwordField]);
 
-<<<<<<< HEAD
-=======
-AccountsTemplates.configure({
-  defaultLayout: 'userFormsLayout',
-  defaultContentRegion: 'content',
-  confirmPassword: false,
-  enablePasswordChange: true,
-  sendVerificationEmail: true,
-  showForgotPasswordLink: true,
-  onLogoutHook() {
-    const homePage = 'home';
-    FlowRouter.reload();
-    // if (FlowRouter.getRouteName() === homePage) {
-    //   FlowRouter.reload();
-    // } else {
-    //   FlowRouter.go(homePage);
-    // }
-  },
-});
-
-_.each(['signIn', 'signUp', 'resetPwd', 'forgotPwd', 'enrollAccount'],
-  (routeName) => AccountsTemplates.configureRoute(routeName));
->>>>>>> fix route and unsaved of anonymous
 
 // We display the form to change the password in a popup window that already
 // have a title, so we unset the title automatically displayed by useraccounts.
@@ -54,7 +31,6 @@ AccountsTemplates.configureRoute('changePwd', {
 
 Accounts.onLogin(function() {
   var path = FlowRouter.current().path;
-<<<<<<< HEAD
   // It seems that meteor has done this, we only do it if the user is in the login page
   // if(path === "/sign-in"){
   //   FlowRouter.go(Session.get("previousURL"));
@@ -79,48 +55,3 @@ Meteor.startup(() => {
     T9n.setLanguage(language.replace(/-/,"_").toLowerCase());
   }
 });
-=======
-  // we only do it if the user is in the login page
-  // if(path === "/sign-in"){
-  //   FlowRouter.go(Session.get("previousURL"));
-  // }
-});
-
-// detect language at the startup time, invoid the apparent reloading of the UI
-// the code is the same to i118n ?
-Meteor.startup(() => {
-  const currentUser = Meteor.user();
-  let language;
-  if (currentUser) {
-    language = currentUser.profile && currentUser.profile.language;
-  } 
-  if (!language) {
-    language =  window.navigator.userLanguage || window.navigator.language || 'zh-CN';    
-  }
-
-  if (language) {
-    TAPi18n.setLanguage(language);
-
-    // T9n need to change zh-CN to zh_cn
-    T9n.setLanguage(language.replace(/-/,"_").toLowerCase());
-  }
-});
-<<<<<<< HEAD
-
-// Accounts.onLogin(function() {
-//  var currentUser = Meteor.user();
-//   if (currentUser) {
-//     language = currentUser.profile && currentUser.profile.language;
-//   } 
-//   if (!language) {
-//     language =  window.navigator.userLanguage || window.navigator.language || 'en';  
-//     Users.update(Meteor.userId(), {
-//       $set: {
-//         'profile.language': language
-//       }
-//     });  
-//   }
-// });
->>>>>>> lead to login for unloged suer
-=======
->>>>>>> fix permission

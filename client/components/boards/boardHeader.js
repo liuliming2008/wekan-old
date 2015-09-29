@@ -6,10 +6,7 @@ Template.boardMenuPopup.events({
   },
   'click .js-change-board-color': Popup.open('boardChangeColor'),
   'click .js-change-language': Popup.open('changeLanguage'),
-<<<<<<< HEAD
   'click .js-invite-emails-for-board': Popup.open('inviteEmailsForBoard'),
-=======
->>>>>>> merge wekan
   'click .js-archive-board ': Popup.afterConfirm('archiveBoard', function() {
     const currentBoard = Boards.findOne(Session.get('currentBoard'));
     currentBoard.archive();
@@ -163,13 +160,10 @@ BlazeComponent.extendComponent({
     }
   },
 
-<<<<<<< HEAD
   onDestroyed(){
     Session.set('currentOrgIdHomeBoardList',''); 
   },
 
-=======
->>>>>>> fix permission
   organizations: function() {
     return Organizations.find({}, {
       sort: ['title']
@@ -181,25 +175,6 @@ BlazeComponent.extendComponent({
     return Organizations.find(
        { members:{ $elemMatch: { userId: Meteor.userId(), isAdmin: true } } }
     )
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    // let args = [];
-    // let userId  = Meteor.userId();
-    // let all = Organizations.find({ 
-    //   $and: [
-    //     { 'members.userId': userId },
-    //     { 'members.isAdmin':  true },
-    //   ],
-    // });
-    // all.forEach(function(org){
-    //   if( _.where(org.members, { userId, isAdmin: true }).length >= 1 )
-    //     args.push(org);
-    // });
-    // return orgs;
->>>>>>> fix permission
-=======
->>>>>>> fix
   },
 
   isCurrentOrg: function(id){
