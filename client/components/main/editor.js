@@ -53,7 +53,11 @@ Template.editor.onRendered(() => {
 const at = HTML.CharRef({html: '&commat;', str: '@'});
 Blaze.Template.registerHelper('mentions', new Template('mentions', function() {
   const view = this;
+<<<<<<< HEAD
 
+=======
+  if( !Session.get('currentBoard') ) return;
+>>>>>>> fix permission
   const currentBoard = Boards.findOne(Session.get('currentBoard'));
   
   if( !currentBoard ) return;

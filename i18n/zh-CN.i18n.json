@@ -55,7 +55,10 @@
     "boardChangeColorPopup-title": "修改看板颜色",
     "boardChangeTitlePopup-title": "重命名看板",
     "boardChangeVisibilityPopup-title": "更改可视级别",
+<<<<<<< HEAD
     "boardImportBoardPopup-title": "从Trello导入看板",
+=======
+>>>>>>> fix permission
     "boardMenuPopup-title": "看板菜单",
     "boards": "看板",
     "bucket-example": "例如 “紧急任务清单” ",
@@ -278,12 +281,18 @@
     "app-page-title": "思奇 -  清单管理云平台  实时 - 无刷新  简单 - 全拖拽",
     "header-app-name": "思奇",
     "header-app-description": "清单管理云平台  实时 - 无刷新  简单 - 全拖拽",
+<<<<<<< HEAD
     "login-app-name": "思奇",
     "login-app-description": "简单实时的清单管理云平台",
+=======
+    "login-app-name": "思齐  -  清单管理云平台",
+    "login-app-description": "实时 - 无刷新  简单 - 全拖拽",
+>>>>>>> fix permission
     "member": "成员",
     "members": "成员",
     "add-member": "添加成员",
     "initials": "头像字母",
+<<<<<<< HEAD
     "invite": "邀请",
     "inviteEmailsForOrgPopup-title": "邀请",
     "invite-emails-for-org-description": "向成员发送邀请邮件，成员接收后，将自动加入该团队；多个邮箱之间用分号英文字符\";\"分割",
@@ -302,4 +311,7 @@
     "creator": "创建者",
     "suggest": "建议和联系我们",
     "none": "无"
+=======
+    "none": "无",
+>>>>>>> fix permission
 }

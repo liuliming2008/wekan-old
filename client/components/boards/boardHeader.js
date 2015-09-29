@@ -163,10 +163,13 @@ BlazeComponent.extendComponent({
     }
   },
 
+<<<<<<< HEAD
   onDestroyed(){
     Session.set('currentOrgIdHomeBoardList',''); 
   },
 
+=======
+>>>>>>> fix permission
   organizations: function() {
     return Organizations.find({}, {
       sort: ['title']
@@ -178,6 +181,22 @@ BlazeComponent.extendComponent({
     return Organizations.find(
        { members:{ $elemMatch: { userId: Meteor.userId(), isAdmin: true } } }
     )
+<<<<<<< HEAD
+=======
+    // let args = [];
+    // let userId  = Meteor.userId();
+    // let all = Organizations.find({ 
+    //   $and: [
+    //     { 'members.userId': userId },
+    //     { 'members.isAdmin':  true },
+    //   ],
+    // });
+    // all.forEach(function(org){
+    //   if( _.where(org.members, { userId, isAdmin: true }).length >= 1 )
+    //     args.push(org);
+    // });
+    // return orgs;
+>>>>>>> fix permission
   },
 
   isCurrentOrg: function(id){

@@ -115,6 +115,7 @@ Organizations.helpers({
   colorClass() {
     return 'org-color-' + this.color;
   },
+<<<<<<< HEAD
   memberIndex(memberId) {
     return _.indexOf(_.pluck(this.members, 'userId'), memberId);
   },
@@ -184,6 +185,8 @@ Meteor.methods({
     else
       return true;
   },
+=======
+>>>>>>> fix permission
 });
 
 
@@ -240,7 +243,10 @@ if (Meteor.isServer) {
     throw new Meteor.Error('Member not found');
   };
 
+<<<<<<< HEAD
   // set memeber isActive to be false when remove member from organization
+=======
+>>>>>>> fix permission
   Organizations.after.update(function(userId, doc, fieldNames, modifier) {
     if (!_.contains(fieldNames, 'members') ||
       !modifier.$pull ||
@@ -250,10 +256,15 @@ if (Meteor.isServer) {
     const boards = Boards.find({organizationId: doc._id});
     for(let i=0; i<boards; i++) {
       const board = boards[i];
+<<<<<<< HEAD
       // if remove multiple members, update here
       // set isActive to false, or remove the member?
       const memberId = modifier.$pull.members.userId;
       let memberIndex = getMemberIndex(doc, memberId);
+=======
+      const memberId = modifier.$pull.members.userId;
+      let memberIndex = getMemberIndex(board, memberId);
+>>>>>>> fix permission
       let setQuery = {};
       setQuery[['members', memberIndex, 'isActive'].join('.')] = false; 
       Boards.update({ _id: board._id }, { $set: setQuery });

@@ -42,6 +42,7 @@ template(name="boardList")
                     class="fa-star{{#if isStarred}} is-star-active{{else}}-o{{/if}}"
                     title="{{_ 'star-board-title'}}")
 <<<<<<< HEAD
+<<<<<<< HEAD
                   span.board-list-item-role  
                     if($eq getRole 'creator')
                       | {{_ 'creator'}}
@@ -65,6 +66,15 @@ template(name="boardList")
     i.fa
       +addOrgForm
 >>>>>>> lead to login for unloged suer
+=======
+          if currentUser.isOrganizationAdmin this._id
+            li.js-add-board.is-idle.add-board(id="org-{{_id}}")
+              a.label {{_ 'add-board'}}
+    div.window-module
+      .window-module-title
+        i.fa
+          +addOrgForm
+>>>>>>> fix permission
       
 template(name="createOrgPopup") 
   form

@@ -86,8 +86,9 @@ Meteor.startup(() => {
   // }
 });
 
+// detect language at the startup time, invoid the apparent reloading of the UI
+// the code is the same to i118n ?
 Meteor.startup(() => {
-  //T9n.defaultLanguage = "zh_cn";
   const currentUser = Meteor.user();
   let language;
   if (currentUser) {
@@ -104,6 +105,7 @@ Meteor.startup(() => {
     T9n.setLanguage(language.replace(/-/,"_").toLowerCase());
   }
 });
+<<<<<<< HEAD
 
 // Accounts.onLogin(function() {
 //  var currentUser = Meteor.user();
@@ -120,3 +122,5 @@ Meteor.startup(() => {
 //   }
 // });
 >>>>>>> lead to login for unloged suer
+=======
+>>>>>>> fix permission
