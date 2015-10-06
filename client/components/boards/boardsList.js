@@ -70,6 +70,7 @@ BlazeComponent.extendComponent({
         var title = this.find('.org-title-input');
         var shortName = this.find('.org-short-name-input');
         var desc = this.find('.org-desc-input');
+<<<<<<< HEAD
         var alert_short_name = $('.js-short-name-invalid');
 
         Meteor.call('checkOrgShortNameUsable',$.trim(shortName.value),function (error, result){
@@ -96,6 +97,22 @@ BlazeComponent.extendComponent({
           }
 
         });
+=======
+        if ( $.trim(title.value) && $.trim(shortName.value)) {
+          var orgId = Organizations.insert({
+            title: $.trim(title.value),
+            shortName: $.trim(shortName.value),
+            description: $.trim(desc.value),
+            //boardId: Session.get('currentBoard'),
+            sort: $('.organization').length
+          });
+        }
+        title.value = '';
+        title.focus();
+        shortName.value = '';
+        desc.value = '';
+       
+>>>>>>> new feature：invite members to board or organization with email
       }
     }];
   }

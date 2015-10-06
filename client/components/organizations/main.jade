@@ -56,6 +56,7 @@ template(name="organization")
               .org-name
                 h1 {{currentOrganization.title}}
 <<<<<<< HEAD
+<<<<<<< HEAD
               if currentUser.isOrganizationAdmin
                 .org-edit
                   a.button-link.js-edit-org 
@@ -68,10 +69,20 @@ template(name="organization")
               .org-desc
                 span {{currentOrganization.description}}
 >>>>>>> fix permission
+=======
+              .org-edit
+                a.button-link.js-edit-org 
+                  i.fa.fa-pencil 
+                  | {{_ "edit"}}
+              .org-desc
+                span {{currentOrganization.description}}
+              
+>>>>>>> new feature：invite members to board or organization with email
           .nav
           .main.u-clearfix
             .main-wrapper
               if currentUser.isOrganizationAdmin
+<<<<<<< HEAD
 <<<<<<< HEAD
                 .window-module.org-functions
                   .org-members-options
@@ -89,6 +100,17 @@ template(name="organization")
                         i.fa.fa-plus 
                         | {{_ "add-member"}}
 >>>>>>> fix permission
+=======
+                .window-module.org-functions
+                  .org-members-options
+                    a.button-link.js-manage-org-members 
+                      i.fa.fa-plus 
+                      | {{_ "add-member"}}
+                  .org-send-invite
+                    a.button-link.js-org-send-invite 
+                      i.fa.fa-send-o 
+                      | {{_ "invite"}}
+>>>>>>> new feature：invite members to board or organization with email
                 hr
               .window-module.js-member-list
                   each currentOrganization.members
@@ -228,4 +250,8 @@ template(name="inviteEmailsForOrgPopup")
       | {{_ 'invite-emails'}}
       textarea.js-invite-emails-input(type="text" placeholder="{{_ 'invite-emails-description'}}"
         autocomplete="off" autofocus)
+<<<<<<< HEAD
     input.primary.wide(type="submit" value="{{_ 'send'}}")
+=======
+    input.primary.wide(type="submit" value="{{_ 'send'}}")
+>>>>>>> new feature：invite members to board or organization with email

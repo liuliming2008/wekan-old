@@ -116,6 +116,7 @@ Organizations.helpers({
     return 'org-color-' + this.color;
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   memberIndex(memberId) {
     return _.indexOf(_.pluck(this.members, 'userId'), memberId);
   },
@@ -189,7 +190,68 @@ Meteor.methods({
 >>>>>>> fix permission
 });
 
+=======
+  memberIndex(memberId) {
+    return _.indexOf(_.pluck(this.members, 'userId'), memberId);
+  },
+});
+Organizations.mutations({
+  setTitle(title) {
+    return { $set: { title }};
+  },
 
+  setDescription(description) {
+    return { $set: { description }};
+  },
+
+  setShortName(shortName) {
+    return { $set: { shortName }};
+  },
+
+  addMember(memberId) {
+    const memberIndex = this.memberIndex(memberId);
+    if (memberIndex === -1) {
+      return {
+        $push: {
+          members: {
+            userId: memberId,
+            isAdmin: false,
+            isActive: true,
+          },
+        },
+      };
+    } else {
+      return {
+        $set: {
+          [`members.${memberIndex}.isActive`]: true,
+          [`members.${memberIndex}.isAdmin`]: false,
+        },
+      };
+    }
+  },
+
+  removeMember(memberId) {
+    const memberIndex = this.memberIndex(memberId);
+
+    return {
+      $set: {
+        [`members.${memberIndex}.isActive`]: false,
+      },
+    };
+  },
+>>>>>>> new feature：invite members to board or organization with email
+
+  setMemberPermission(memberId, isAdmin) {
+    const memberIndex = this.memberIndex(memberId);
+
+    return {
+      $set: {
+        [`members.${memberIndex}.isAdmin`]: isAdmin,
+      },
+    };
+  },
+
+});
 Organizations.before.insert(function(userId, doc) {
   // XXX We need to improve slug management. Only the id should be necessary
   // to identify a board in the code.

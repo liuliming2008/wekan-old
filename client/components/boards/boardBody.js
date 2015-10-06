@@ -194,7 +194,11 @@ BlazeComponent.extendComponent({
 
   // Proxy
   open() {
+<<<<<<< HEAD
     this.childrenComponents('inlinedForm')[0].open();
+=======
+    this.componentChildren('inlinedForm')[0].open();
+>>>>>>> new feature：invite members to board or organization with email
   },
 
   onCreated() {

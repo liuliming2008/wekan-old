@@ -164,6 +164,10 @@ BlazeComponent.extendComponent({
     Session.set('currentOrgIdHomeBoardList',''); 
   },
 
+  onDestroyed(){
+    Session.set('currentOrgIdHomeBoardList',''); 
+  },
+
   organizations: function() {
     return Organizations.find({}, {
       sort: ['title']
@@ -184,8 +188,13 @@ BlazeComponent.extendComponent({
     if( !currentOrganization)
       currentOrganization = Organizations.findOne({shortName: Session.get('currentOrganizationShortName')});
     if( !currentOrganization){
+<<<<<<< HEAD
       if( Session.get('currentBoard') && Boards.findOne(Session.get('currentBoard')) )
         currentOrganization = Organizations.findOne(  Boards.findOne(Session.get('currentBoard')).organizationId );
+=======
+      if( Session.get('currentBoard') )
+        currentOrganization = Organizations.find(  Boards.findOne(Session.get('currentBoard')).organizationId );
+>>>>>>> new feature：invite members to board or organization with email
     }
     if( (currentOrganization && currentOrganization._id === id) ||
       (!currentOrganization && !id))

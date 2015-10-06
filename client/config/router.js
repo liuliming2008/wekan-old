@@ -114,6 +114,7 @@ FlowRouter.notFound = {
   },
 };
 
+<<<<<<< HEAD
 // As it is not possible to use template helpers in the page <head> we create a
 // reactive function whose role is to set any page-specific tag in the <head>
 // using the `kadira:dochead` package. Currently we only use it to display the
@@ -134,6 +135,24 @@ Meteor.startup(() => {
       titleStack.push(currentBoard.title);
     }
     DocHead.setTitle(titleStack.reverse().join(' - '));
+=======
+// We maintain a list of redirections to ensure that we don't break old URLs
+// when we change our routing scheme.
+const redirections = {
+  '/boards': '/',
+  '/boards/:id/:slug': '/b/:id/:slug',
+  '/boards/:id/:slug/:cardId': '/b/:id/:slug/:cardId',
+  '/#/enroll-account/:id': '/enroll-account/:id',
+  '/#/reset-password/:id': '/reset-password/:id',
+  '/#/verify-email/:id': '/verify-email/:id',
+};
+
+_.each(redirections, (newPath, oldPath) => {
+  FlowRouter.route(oldPath, {
+    triggersEnter: [(context, redirect) => {
+      redirect(FlowRouter.path(newPath, context.params));
+    }],
+>>>>>>> new feature：invite members to board or organization with email
   });
 });
 

@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 METEOR@1.2.1-rc.4
 =======
 METEOR@1.2-rc.14
@@ -7,3 +8,6 @@ METEOR@1.2-rc.14
 =======
 METEOR@1.2.0.1
 >>>>>>> merge wekan
+=======
+METEOR@1.2.0.2
+>>>>>>> new feature：invite members to board or organization with email
