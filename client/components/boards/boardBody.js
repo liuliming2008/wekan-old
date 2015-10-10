@@ -254,8 +254,14 @@ BlazeComponent.extendComponent({
             sort: $('.list').length,
             permission: permission,
           });
+<<<<<<< HEAD
           titleInput.value = '';
           titleInput.focus();
+=======
+ 
+          title.value = '';
+          title.focus();
+>>>>>>> fix language for safari mobile
         }
       },
     }];

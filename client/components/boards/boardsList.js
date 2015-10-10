@@ -71,6 +71,9 @@ BlazeComponent.extendComponent({
         var shortName = this.find('.org-short-name-input');
         var desc = this.find('.org-desc-input');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix language for safari mobile
         var alert_short_name = $('.js-short-name-invalid');
 
         Meteor.call('checkOrgShortNameUsable',$.trim(shortName.value),function (error, result){
@@ -97,6 +100,7 @@ BlazeComponent.extendComponent({
           }
 
         });
+<<<<<<< HEAD
 =======
         if ( $.trim(title.value) && $.trim(shortName.value)) {
           var orgId = Organizations.insert({
@@ -117,3 +121,9 @@ BlazeComponent.extendComponent({
     }];
   }
 }).register('createOrgPopup');
+=======
+      }
+    }];
+  }
+}).register('createOrgPopup');
+>>>>>>> fix language for safari mobile

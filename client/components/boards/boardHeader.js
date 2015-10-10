@@ -158,10 +158,13 @@ BlazeComponent.extendComponent({
       if( Boards.find({organizationId: currentOrganization._id, orgMemberAutoJoin: false,}).count() < 1)
         this.checkOrgMemberAutoJoin.set(true);
     }
+<<<<<<< HEAD
   },
 
   onDestroyed(){
     Session.set('currentOrgIdHomeBoardList',''); 
+=======
+>>>>>>> fix language for safari mobile
   },
 
   onDestroyed(){
@@ -189,12 +192,17 @@ BlazeComponent.extendComponent({
       currentOrganization = Organizations.findOne({shortName: Session.get('currentOrganizationShortName')});
     if( !currentOrganization){
 <<<<<<< HEAD
+<<<<<<< HEAD
       if( Session.get('currentBoard') && Boards.findOne(Session.get('currentBoard')) )
         currentOrganization = Organizations.findOne(  Boards.findOne(Session.get('currentBoard')).organizationId );
 =======
       if( Session.get('currentBoard') )
         currentOrganization = Organizations.find(  Boards.findOne(Session.get('currentBoard')).organizationId );
 >>>>>>> new feature：invite members to board or organization with email
+=======
+      if( Session.get('currentBoard') && Boards.findOne(Session.get('currentBoard')) )
+        currentOrganization = Organizations.findOne(  Boards.findOne(Session.get('currentBoard')).organizationId );
+>>>>>>> fix language for safari mobile
     }
     if( (currentOrganization && currentOrganization._id === id) ||
       (!currentOrganization && !id))
@@ -251,7 +259,10 @@ BlazeComponent.extendComponent({
       'click .js-org-member-auto-join': function(){
         this.checkOrgMemberAutoJoin.set( !this.checkOrgMemberAutoJoin.get() )
       },
+<<<<<<< HEAD
       'click .js-import': Popup.open('boardImportBoard'),
+=======
+>>>>>>> fix language for safari mobile
       submit: this.onSubmit,
     }];
   },

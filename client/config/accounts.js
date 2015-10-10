@@ -10,6 +10,7 @@ AccountsTemplates.addFields([{
 }, emailField, passwordField]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 AccountsTemplates.configure({
   defaultLayout: 'userFormsLayout',
@@ -35,6 +36,9 @@ AccountsTemplates.configure({
 _.each(['signIn', 'signUp', 'resetPwd', 'forgotPwd', 'enrollAccount'],
   (routeName) => AccountsTemplates.configureRoute(routeName));
 >>>>>>> new feature：invite members to board or organization with email
+=======
+
+>>>>>>> fix language for safari mobile
 
 // We display the form to change the password in a popup window that already
 // have a title, so we unset the title automatically displayed by useraccounts.

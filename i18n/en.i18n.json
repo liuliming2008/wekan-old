@@ -291,6 +291,7 @@
     "invite-emails-for-board-description": "Send invitations to memebers, they will joind this board to be member after acceptted;use\";\"to divide multiple emails",
     "inviteEmailsPopup-title": "Invite",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "invite-emails-description": "Send invitations to memebers;use\";\"to divide multiple emails",   
     "invite-emails": "Emails",
     "invite-emails-description": "use\";\"to divide multiple emails",
@@ -305,10 +306,20 @@
 =======
     "invite-emails-description": "Send invitations to memebers;use\";\"to divide multiple emails",
     
+=======
+    "invite-emails-description": "Send invitations to memebers;use\";\"to divide multiple emails",   
+>>>>>>> fix language for safari mobile
     "invite-emails": "Emails",
     "invite-emails-description": "use\";\"to divide multiple emails",
-     "editOrgFormPopup-title": "Edit Organization",
+    "editOrgFormPopup-title": "Edit Organization",
     "send": "发送",
+<<<<<<< HEAD
 >>>>>>> new feature：invite members to board or organization with email
+=======
+    "set-organization": "Organization",
+    "org-member-auto-join-description": "All orgnization members join this board automatically",
+    "short-name-invalid": "Short name has been used",
+    "createOrgPopup-title": "Create Organization",
+>>>>>>> fix language for safari mobile
     "none": "None"
 }

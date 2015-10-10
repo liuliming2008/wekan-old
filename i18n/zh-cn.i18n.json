@@ -290,24 +290,34 @@
     "inviteEmailsForBoardPopup-title": "邀请",
     "invite-emails-for-board-description": "向成员发送邀请邮件，成员接收后，将自动加入该看板；多个邮箱之间用分号英文字符\";\"分割",
     "inviteEmailsPopup-title": "邀请",
+<<<<<<< HEAD:i18n/zh-CN.i18n.json
 <<<<<<< HEAD
     "invite-emails-description": "向成员发送邀请邮件；多个邮箱之间用分号英文字符\";\"分割",   
 =======
     "invite-emails-description": "向成员发送邀请邮件；多个邮箱之间用分号英文字符\";\"分割",
     
 >>>>>>> new feature：invite members to board or organization with email
+=======
+    "invite-emails-description": "向成员发送邀请邮件；多个邮箱之间用分号英文字符\";\"分割",   
+>>>>>>> fix language for safari mobile:i18n/zh-cn.i18n.json
     "invite-emails": "邮箱",
     "invite-emails-description": "多个邮箱之间用分号英文字符\";\"分割",
     "editOrgFormPopup-title": "编辑团队资料",
     "send": "发送",
+<<<<<<< HEAD:i18n/zh-CN.i18n.json
 <<<<<<< HEAD
+=======
+>>>>>>> fix language for safari mobile:i18n/zh-cn.i18n.json
     "set-organization": "所属团队",
     "org-member-auto-join-description": "所有成员自动加入该看板",
     "short-name-invalid": "短名称已被使用",
     "createOrgPopup-title": "创建团队",
+<<<<<<< HEAD:i18n/zh-CN.i18n.json
     "creator": "创建者",
     "suggest": "建议和联系我们",
 =======
 >>>>>>> new feature：invite members to board or organization with email
+=======
+>>>>>>> fix language for safari mobile:i18n/zh-cn.i18n.json
     "none": "无"
 }
