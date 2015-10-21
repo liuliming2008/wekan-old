@@ -301,6 +301,7 @@
     "org-member-auto-join-description": "All orgnization members join this board automatically",
     "short-name-invalid": "Short name has been used",
     "createOrgPopup-title": "Create Organization",
+<<<<<<< HEAD
     "creator": "Creator",   
     "suggest": "Suggest",
 =======
@@ -321,5 +322,8 @@
     "short-name-invalid": "Short name has been used",
     "createOrgPopup-title": "Create Organization",
 >>>>>>> fix language for safari mobile
+=======
+    "creator": "Creator",
+>>>>>>> fix permission bug
     "none": "None"
 }

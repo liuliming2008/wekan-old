@@ -7,8 +7,11 @@
     "activity-attached": "附加 %s 至 %s",
     "activity-created": "创建 %s",
     "activity-excluded": "排除 %s 从 %s",
+<<<<<<< HEAD
     "activity-imported": "导入 %s 到 %s，从 %s",
     "activity-imported-board": "导入 %s ，s，从 %s",
+=======
+>>>>>>> fix permission bug
     "activity-joined": "加入 %s",
     "activity-moved": "将 %s 从 %s 移动到 %s",
     "activity-on": "在 %s 添加评论",
@@ -312,6 +315,7 @@
     "org-member-auto-join-description": "所有成员自动加入该看板",
     "short-name-invalid": "短名称已被使用",
     "createOrgPopup-title": "创建团队",
+<<<<<<< HEAD
 <<<<<<< HEAD:i18n/zh-CN.i18n.json
     "creator": "创建者",
     "suggest": "建议和联系我们",
@@ -319,5 +323,8 @@
 >>>>>>> new feature：invite members to board or organization with email
 =======
 >>>>>>> fix language for safari mobile:i18n/zh-cn.i18n.json
+=======
+    "creator": "创建者",
+>>>>>>> fix permission bug
     "none": "无"
 }

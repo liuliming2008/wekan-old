@@ -147,3 +147,4 @@ Migrations.add('add-board-createuser-field', () => {
     Boards.update(board._id, {$set: {createUser: board.members[0].userId}}, noValidate);
   });
 });
+

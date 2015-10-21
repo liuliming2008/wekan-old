@@ -188,10 +188,7 @@ if (Meteor.isServer) {
       check(emails,Array);
       check(destType,String);
       check(destId,String);
-<<<<<<< HEAD
       let dest = null;
-=======
->>>>>>> new feature：invite members to board or organization with email
       for(var i=0;i<emails.length;i++){
         let userId;
         if ( emails[i].indexOf('@') < 1 )
@@ -203,7 +200,6 @@ if (Meteor.isServer) {
           userId = Users.findOne({emails: {$elemMatch: {address:emails[i]}}})._id;
         if( userId )
         {
-<<<<<<< HEAD
           if( dest === null ){
             if( destType === 'organization' && Meteor.user().isOrganizationAdmin(destId) ){
                 dest = Organizations.findOne(destId);
@@ -215,16 +211,6 @@ if (Meteor.isServer) {
             
           if( dest)
             dest.addMember(userId);
-=======
-          if( destType === 'organization' && Meteor.user().isOrganizationAdmin(destId) ){
-            let org = Organizations.findOne(destId);
-            org.addMember(userId);
-          }
-          else if( destType === 'board' && Meteor.user().isBoardAdmin(destId) ){
-            let board = Boards.findOne(destId);
-            board.addMember(userId);
-          }
->>>>>>> new feature：invite members to board or organization with email
         }
         
       }
