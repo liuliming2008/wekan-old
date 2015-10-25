@@ -70,9 +70,13 @@ Template.createLabelPopup.events({
   // Create the new label
   'submit .create-label'(evt, tpl) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     evt.preventDefault();
 =======
 >>>>>>> merge wekan
+=======
+    evt.preventDefault();
+>>>>>>> resolve conflict
     const board = Boards.findOne(Session.get('currentBoard'));
     const name = tpl.$('#labelName').val().trim();
     const color = Blaze.getData(tpl.find('.fa-check')).color;

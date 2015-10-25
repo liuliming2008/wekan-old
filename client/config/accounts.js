@@ -38,8 +38,11 @@ _.each(['signIn', 'signUp', 'resetPwd', 'forgotPwd', 'enrollAccount'],
 >>>>>>> new feature：invite members to board or organization with email
 =======
 
+<<<<<<< HEAD
 >>>>>>> fix language for safari mobile
 
+=======
+>>>>>>> resolve conflict
 // We display the form to change the password in a popup window that already
 // have a title, so we unset the title automatically displayed by useraccounts.
 AccountsTemplates.configure({

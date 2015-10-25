@@ -147,7 +147,11 @@ BlazeComponent.extendComponent({
     var self = this;
     if (!Meteor.user() || !Meteor.user().isBoardMember())
       return;
+<<<<<<< HEAD
     const boardComponent = self.parentComponent();
+=======
+    const boardComponent = self.componentParent();
+>>>>>>> resolve conflict
     const itemsSelector = '.js-minicard:not(.placeholder, .js-card-composer)';
     const $cards = self.$('.js-minicards');
 

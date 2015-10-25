@@ -6,16 +6,22 @@ BlazeComponent.extendComponent({
   editTitle(evt) {
     evt.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> resolve conflict
     const newTitle = this.childrenComponents('inlinedForm')[0].getValue();
     const list = this.currentData().trim();
     if (newTitle) {
       list.rename(newTitle.trim());
+<<<<<<< HEAD
 =======
     const newTitle = this.componentChildren('inlinedForm')[0].getValue();
     const list = this.currentData();
     if ($.trim(newTitle)) {
       list.rename(newTitle);
 >>>>>>> merge wekan
+=======
+>>>>>>> resolve conflict
     }
   },
 

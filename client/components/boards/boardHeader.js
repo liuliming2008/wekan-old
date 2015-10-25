@@ -260,9 +260,13 @@ BlazeComponent.extendComponent({
         this.checkOrgMemberAutoJoin.set( !this.checkOrgMemberAutoJoin.get() )
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
       'click .js-import': Popup.open('boardImportBoard'),
 =======
 >>>>>>> fix language for safari mobile
+=======
+      'click .js-import': Popup.open('boardImportBoard'),
+>>>>>>> resolve conflict
       submit: this.onSubmit,
     }];
   },

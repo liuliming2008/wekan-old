@@ -31,6 +31,7 @@ BlazeComponent.extendComponent({
       },
       'submit .js-new-comment-form'(evt) {
         const input = this.getInput();
+        const text = input.val().trim();
         if(!(Meteor.userId())) {
           Session.set('currentCommentCard',this.currentData()._id);
           Session.set('currentComment',input.val());
@@ -38,7 +39,7 @@ BlazeComponent.extendComponent({
           FlowRouter.go("atSignIn");
           return;
         }
-        if ($.trim(input.val())) {
+        if (text) {
           if( ! Meteor.user().isBoardMember() )
             Boards.update(this.boardId, {
               $push: {
@@ -50,9 +51,9 @@ BlazeComponent.extendComponent({
               }
             });
           CardComments.insert({
+            text,
             boardId: this.currentData().boardId,
             cardId: this.currentData()._id,
-            text: input.val(),
           });
           //Session.set('currentComment', null);
           resetCommentInput(input);
@@ -99,13 +100,19 @@ EscapeActions.register('inlinedForm',
     };
     const commentInput = $('.js-new-comment-input');
 <<<<<<< HEAD
+<<<<<<< HEAD
     const draft = commentInput.val().trim();
     if (draft) {
       UnsavedEdits.set(draftKey, draft);
 =======
     if ($.trim(commentInput.val())) {
+=======
+
+    const draft = commentInput.val().trim();
+    if (draft) {
+>>>>>>> resolve conflict
       if(Meteor.userId())
-        UnsavedEdits.set(draftKey, commentInput.val());
+        UnsavedEdits.set(draftKey, draft);
       else
         SessionUnsavedEdits.set(draftKey, commentInput.val());
 >>>>>>> fix route and unsaved of anonymous

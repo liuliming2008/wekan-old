@@ -187,6 +187,7 @@ Filter = {
 
     const filterSelectorSet = {};
 <<<<<<< HEAD
+<<<<<<< HEAD
     this._fields_set.forEach((fieldName) => {
       const filter = this[fieldName];
       if (filter._isActive())
@@ -208,6 +209,9 @@ Filter = {
 
 =======
     _.forEach(this._fields_set, (fieldName) => {
+=======
+    this._fields_set.forEach((fieldName) => {
+>>>>>>> resolve conflict
       const filter = this[fieldName];
       if (filter._isActive())
         filterSelectorSet[fieldName] = filter._getMongoSelector();

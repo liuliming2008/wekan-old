@@ -231,8 +231,9 @@ Cards.before.insert((userId, doc) => {
   }
   doc.votes = 0;
 
-  if (!doc.userId) 
+  if (!doc.userId) {
     doc.userId = userId;
+  }
 });
 
 

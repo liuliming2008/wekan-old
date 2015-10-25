@@ -21,13 +21,6 @@ if (isSandstorm && Meteor.isServer) {
     permission: 'public',
   };
 
-  // This function should probably be handled by `accounts-sandstorm` but
-  // apparently meteor-core misses an API to handle that cleanly, cf.
-  // https://github.com/meteor/meteor/blob/ff783e9a12ffa04af6fd163843a563c9f4bbe8c1/packages/accounts-base/accounts_server.js#L1143
-  function updateUserAvatar(userId, avatarUrl) {
-    Users.findOne(userId).setAvatarUrl(avatarUrl);
-  }
-
   function updateUserPermissions(userId, permissions) {
     const isActive = permissions.includes('participate');
     const isAdmin = permissions.includes('configure');

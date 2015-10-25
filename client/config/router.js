@@ -116,6 +116,9 @@ FlowRouter.notFound = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> resolve conflict
 // As it is not possible to use template helpers in the page <head> we create a
 // reactive function whose role is to set any page-specific tag in the <head>
 // using the `kadira:dochead` package. Currently we only use it to display the
@@ -136,6 +139,7 @@ Meteor.startup(() => {
       titleStack.push(currentBoard.title);
     }
     DocHead.setTitle(titleStack.reverse().join(' - '));
+<<<<<<< HEAD
 =======
 // We maintain a list of redirections to ensure that we don't break old URLs
 // when we change our routing scheme.
@@ -159,3 +163,7 @@ _.each(redirections, (newPath, oldPath) => {
 
 =======
 >>>>>>> fix language for safari mobile
+=======
+  });
+});
+>>>>>>> resolve conflict

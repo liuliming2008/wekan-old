@@ -77,6 +77,19 @@ Users.helpers({
     }
   },
 
+  getAvatarUrl() {
+    // Although we put the avatar picture URL in the `profile` object, we need
+    // to support Sandstorm which put in the `picture` attribute by default.
+    // XXX Should we move both cases to `picture`?
+    if (this.picture) {
+      return this.picture;
+    } else if (this.profile && this.profile.avatarUrl) {
+      return this.profile.avatarUrl;
+    } else {
+      return null;
+    }
+  },
+
   getInitials() {
     const profile = this.profile || {};
     if (profile.initials)
@@ -273,6 +286,7 @@ if (Meteor.isServer) {
   //     permission: 'private',
   //   };
 
+<<<<<<< HEAD
   //   // Insert the Welcome Board
   //   Boards.insert(ExampleBoard, (err, boardId) => {
   //     let sort = 0;
@@ -283,6 +297,18 @@ if (Meteor.isServer) {
   //         userId: ExampleBoard.userId,
   //         sort,
   //         permission: 'member',
+=======
+    // Insert the Welcome Board
+    Boards.insert(ExampleBoard, (err, boardId) => {
+      let sort = 0;
+      ['Basics', 'Advanced'].forEach((title) => {
+        const list = {
+          title,
+          boardId,
+          userId: ExampleBoard.userId,
+          sort,
+          permission: 'member',
+>>>>>>> resolve conflict
 
   //         // XXX Not certain this is a bug, but we except these fields get
   //         // inserted by the Lists.before.insert collection-hook. Since this

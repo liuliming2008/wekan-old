@@ -159,12 +159,17 @@ BlazeComponent.extendComponent({
       'submit .js-card-details-title'(evt) {
         evt.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
         const title = this.currentComponent().getValue().trim();
         if (title) {
 =======
         const title = this.currentComponent().getValue();
         if ($.trim(title)) {
 >>>>>>> merge wekan
+=======
+        const title = this.currentComponent().getValue().trim();
+        if (title) {
+>>>>>>> resolve conflict
           this.data().setTitle(title);
         }
       },

@@ -195,10 +195,14 @@ BlazeComponent.extendComponent({
   // Proxy
   open() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.childrenComponents('inlinedForm')[0].open();
 =======
     this.componentChildren('inlinedForm')[0].open();
 >>>>>>> new feature：invite members to board or organization with email
+=======
+    this.childrenComponents('inlinedForm')[0].open();
+>>>>>>> resolve conflict
   },
 
   onCreated() {
@@ -245,8 +249,12 @@ BlazeComponent.extendComponent({
       submit(evt) {
         evt.preventDefault();
         var permission = this.permission.get();
+<<<<<<< HEAD
         const titleInput =  this.find('.list-name-input');
         const title = titleInput.value.trim();
+=======
+        const title = this.find('.list-name-input').value.trim();
+>>>>>>> resolve conflict
         if (title) {
           Lists.insert({
             title,
