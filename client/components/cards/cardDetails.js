@@ -183,8 +183,11 @@ BlazeComponent.extendComponent({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix route and unsaved of anonymous
+=======
+>>>>>>> fix merge error
       'click .js-vote-card'(evt) {
         if(!Meteor.user()) {
           evt.preventDefault();
@@ -192,18 +195,24 @@ BlazeComponent.extendComponent({
           return;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       'click .js-vote-card'() {
         if(!Meteor.user()) FlowRouter.go("/login");
 >>>>>>> lead to login for unloged suer
 =======
 >>>>>>> fix route and unsaved of anonymous
+=======
+>>>>>>> fix merge error
         Meteor.user().voteCard(this.currentData()._id);
         //Users.update(Meteor.UserId(),{$addToSet: {profile.votedCards: this.currentData()._id}});
       },
     }];
+<<<<<<< HEAD
 =======
 >>>>>>> update from wekan devel
+=======
+>>>>>>> fix merge error
   },
 }).register('cardDetails');
 

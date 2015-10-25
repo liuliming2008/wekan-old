@@ -170,6 +170,7 @@ _.each(redirections, (newPath, oldPath) => {
 >>>>>>> resolve conflict
 =======
 
+<<<<<<< HEAD
 // As it is not possible to use template helpers in the page <head> we create a
 // reactive function whose role is to set any page-specific tag in the <head>
 // using the `kadira:dochead` package. Currently we only use it to display the
@@ -193,3 +194,5 @@ Meteor.startup(() => {
   });
 });
 >>>>>>> update from wekan devel
+=======
+>>>>>>> fix merge error

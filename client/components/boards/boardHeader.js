@@ -250,6 +250,9 @@ BlazeComponent.extendComponent({
       },
       'click .js-change-visibility': this.toggleVisibilityMenu,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix merge error
       'change #org-id': function(evt) {
         var orgId = $(evt.target).val();
         if( orgId !== '')
@@ -262,6 +265,7 @@ BlazeComponent.extendComponent({
       },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       'click .js-import': Popup.open('boardImportBoard'),
 =======
 >>>>>>> fix language for safari mobile
@@ -270,6 +274,9 @@ BlazeComponent.extendComponent({
 >>>>>>> resolve conflict
 =======
 >>>>>>> update from wekan devel
+=======
+      'click .js-import': Popup.open('boardImportBoard'),
+>>>>>>> fix merge error
       submit: this.onSubmit,
     }];
   },

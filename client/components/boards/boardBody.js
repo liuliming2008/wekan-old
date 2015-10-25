@@ -249,6 +249,7 @@ BlazeComponent.extendComponent({
       submit(evt) {
         evt.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
         var permission = this.permission.get();
 <<<<<<< HEAD
         const titleInput =  this.find('.list-name-input');
@@ -259,6 +260,11 @@ BlazeComponent.extendComponent({
         if (title) {
 =======
 >>>>>>> update from wekan devel
+=======
+        var permission = this.permission.get();
+        const title = this.find('.list-name-input').value.trim();
+        if (title) {
+>>>>>>> fix merge error
           Lists.insert({
             title,
             boardId: Session.get('currentBoard'),
