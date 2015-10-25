@@ -41,6 +41,7 @@ Users.helpers({
     return board && this.isBoardMember(board) &&
                           _.where(board.members, {userId: this._id})[0].isAdmin;
   },
+<<<<<<< HEAD
 
   // at server side, can not use Session.get, must give orgId 
   isOrganizationMember(orgId) {
@@ -90,6 +91,8 @@ Users.helpers({
     }
   },
 
+=======
+>>>>>>> update from wekan devel
   getInitials() {
     const profile = this.profile || {};
     if (profile.initials)
@@ -300,9 +303,7 @@ if (Meteor.isServer) {
 =======
     // Insert the Welcome Board
     Boards.insert(ExampleBoard, (err, boardId) => {
-      let sort = 0;
-      ['Basics', 'Advanced'].forEach((title) => {
-        const list = {
+      _.forEach(['Basics', 'Advanced'], (title) => {        const list = {
           title,
           boardId,
           userId: ExampleBoard.userId,

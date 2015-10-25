@@ -249,6 +249,7 @@ BlazeComponent.extendComponent({
         this.setVisibility(this.currentData());
       },
       'click .js-change-visibility': this.toggleVisibilityMenu,
+<<<<<<< HEAD
       'change #org-id': function(evt) {
         var orgId = $(evt.target).val();
         if( orgId !== '')
@@ -267,6 +268,8 @@ BlazeComponent.extendComponent({
 =======
       'click .js-import': Popup.open('boardImportBoard'),
 >>>>>>> resolve conflict
+=======
+>>>>>>> update from wekan devel
       submit: this.onSubmit,
     }];
   },

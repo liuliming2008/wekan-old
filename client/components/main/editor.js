@@ -66,6 +66,7 @@ Blaze.Template.registerHelper('mentions', new Template('mentions', function() {
 =======
 
   const currentBoard = Boards.findOne(Session.get('currentBoard'));
+<<<<<<< HEAD
 
   if( !currentBoard ) return;
 <<<<<<< HEAD
@@ -74,6 +75,8 @@ Blaze.Template.registerHelper('mentions', new Template('mentions', function() {
 =======
   const knowedUsers = currentBoard.members.map((member) => {
 >>>>>>> resolve conflict
+=======
+>>>>>>> update from wekan devel
     member.username = Users.findOne(member.userId).username;
     return member;
   });

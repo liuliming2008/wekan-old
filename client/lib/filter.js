@@ -185,6 +185,7 @@ Filter = {
     if (!this.isActive())
       return {};
 
+<<<<<<< HEAD
     const filterSelectorSet = {};
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -212,6 +213,8 @@ Filter = {
 =======
     this._fields_set.forEach((fieldName) => {
 >>>>>>> resolve conflict
+=======
+>>>>>>> update from wekan devel
       const filter = this[fieldName];
       if (filter._isActive())
         filterSelectorSet[fieldName] = filter._getMongoSelector();

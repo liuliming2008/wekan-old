@@ -182,6 +182,7 @@ BlazeComponent.extendComponent({
       },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fix route and unsaved of anonymous
       'click .js-vote-card'(evt) {
@@ -201,6 +202,8 @@ BlazeComponent.extendComponent({
         //Users.update(Meteor.UserId(),{$addToSet: {profile.votedCards: this.currentData()._id}});
       },
     }];
+=======
+>>>>>>> update from wekan devel
   },
 }).register('cardDetails');
 

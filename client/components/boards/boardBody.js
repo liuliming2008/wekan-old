@@ -248,6 +248,7 @@ BlazeComponent.extendComponent({
       },
       submit(evt) {
         evt.preventDefault();
+<<<<<<< HEAD
         var permission = this.permission.get();
 <<<<<<< HEAD
         const titleInput =  this.find('.list-name-input');
@@ -256,6 +257,8 @@ BlazeComponent.extendComponent({
         const title = this.find('.list-name-input').value.trim();
 >>>>>>> resolve conflict
         if (title) {
+=======
+>>>>>>> update from wekan devel
           Lists.insert({
             title,
             boardId: Session.get('currentBoard'),

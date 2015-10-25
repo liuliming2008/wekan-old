@@ -307,14 +307,6 @@ Boards.before.insert((userId, doc) => {
   // Handle labels
   const colors = Boards.simpleSchema()._schema['labels.$.color'].allowedValues;
   const defaultLabelsColors = _.clone(colors).splice(0, 6);
-
-  if( !(doc.sortType))
-    if( doc.permission === "collaborate" || doc.permission === "public")
-      doc.sortType = 'votes';
-    else
-      doc.sortType = 'sort';
-
-  doc.labels = _.map(defaultLabelsColors, (color) => {
     return {
       color,
       _id: Random.id(6),

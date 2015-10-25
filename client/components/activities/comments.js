@@ -30,26 +30,6 @@ BlazeComponent.extendComponent({
         commentFormIsOpen.set(true);
       },
       'submit .js-new-comment-form'(evt) {
-        const input = this.getInput();
-        const text = input.val().trim();
-        if(!(Meteor.userId())) {
-          Session.set('currentCommentCard',this.currentData()._id);
-          Session.set('currentComment',input.val());
-          evt.preventDefault();
-          FlowRouter.go("atSignIn");
-          return;
-        }
-        if (text) {
-          if( ! Meteor.user().isBoardMember() )
-            Boards.update(this.boardId, {
-              $push: {
-                members: {
-                  userId: Meteor.userId(),
-                  isAdmin: false,
-                  isActive: true
-                }
-              }
-            });
           CardComments.insert({
             text,
             boardId: this.currentData().boardId,
@@ -101,6 +81,7 @@ EscapeActions.register('inlinedForm',
     const commentInput = $('.js-new-comment-input');
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const draft = commentInput.val().trim();
     if (draft) {
       UnsavedEdits.set(draftKey, draft);
@@ -116,6 +97,8 @@ EscapeActions.register('inlinedForm',
       else
         SessionUnsavedEdits.set(draftKey, commentInput.val());
 >>>>>>> fix route and unsaved of anonymous
+=======
+>>>>>>> update from wekan devel
     } else {
       UnsavedEdits.reset(draftKey);
       SessionUnsavedEdits.reset(draftKey);
