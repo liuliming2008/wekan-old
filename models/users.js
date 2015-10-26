@@ -41,10 +41,6 @@ Users.helpers({
     return board && this.isBoardMember(board) &&
                           _.where(board.members, {userId: this._id})[0].isAdmin;
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix merge error
 
   // at server side, can not use Session.get, must give orgId 
   isOrganizationMember(orgId) {
@@ -81,24 +77,6 @@ Users.helpers({
     }
   },
 
-<<<<<<< HEAD
-  getAvatarUrl() {
-    // Although we put the avatar picture URL in the `profile` object, we need
-    // to support Sandstorm which put in the `picture` attribute by default.
-    // XXX Should we move both cases to `picture`?
-    if (this.picture) {
-      return this.picture;
-    } else if (this.profile && this.profile.avatarUrl) {
-      return this.profile.avatarUrl;
-    } else {
-      return null;
-    }
-  },
-
-=======
->>>>>>> update from wekan devel
-=======
->>>>>>> fix merge error
   getInitials() {
     const profile = this.profile || {};
     if (profile.initials)
@@ -305,6 +283,7 @@ if (Meteor.isServer) {
   //         userId: ExampleBoard.userId,
   //         sort,
   //         permission: 'member',
+
   //         // XXX Not certain this is a bug, but we except these fields get
   //         // inserted by the Lists.before.insert collection-hook. Since this
   //         // hook is not called in this case, we have to dublicate the logic and

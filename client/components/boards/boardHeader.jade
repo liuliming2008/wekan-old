@@ -16,48 +16,16 @@ template(name="headerBoard")
         a.board-header-btn(class="{{#if currentUser.isBoardAdmin}}js-change-visibility{{else}}is-disabled{{/if}}")
           i.fa(class="{{#if isPublic}}fa-globe{{else}}{{#if isCollaborate}}fa-magic{{else}}fa-lock{{/if}}{{/if}}")
           span {{_ currentBoard.permission}}
-<<<<<<< HEAD
-      else
-        span.board-header-btn
-          i.fa(class="{{#if isPublic}}fa-globe{{else}}{{#if isCollaborate}}fa-magic{{else}}fa-lock{{/if}}{{/if}}")
-          span {{_ currentBoard.permission}}
-=======
->>>>>>> fix route and unsaved of anonymous
       a.board-header-btn.js-change-sort {{_ getSortTypeText}}
           i.fa.fa-angle-down
 
   .board-header-btns.right
-<<<<<<< HEAD
-<<<<<<< HEAD
     if currentUser
       a.left-votes 
         span {{_ "user-can-vote" currentUser.todayVotesLeft}}
     else
       with(pathFor route='atSignIn')
           p.left-votes {{{_ 'login-to-vote' this}}}
-=======
-    a.board-header-btn.js-open-board-search-view(
-        title="{{#if BoardSearch.isActive}}{{_ 'board-search-on-desc'}}{{/if}}"
-        class="{{#if BoardSearch.isActive}}emphasis{{/if}}")
-      i.fa.fa-search
-      span {{#if BoardSearch.isActive}}{{_ 'board-search-on'}}{{else}}{{_ 'board-search'}}{{/if}}
-      if BoardSearch.isActive
-        a.board-header-btn-close.js-board-search-reset(title="{{_ 'board-search-clear'}}")
-          i.fa.fa-times-thin
-
->>>>>>> merge wekan
-=======
-    if currentUser
-      a.left-votes 
-        span {{_ "user-can-vote" currentUser.todayVotesLeft}}
-    else
-<<<<<<< HEAD
-      span.left-voate {{_ 'login-to-vote' '/login'}}
->>>>>>> lead to login for unloged suer
-=======
-      with(pathFor route='atSignIn')
-          p.left-votes {{{_ 'login-to-vote' this}}}
->>>>>>> fix route and unsaved of anonymous
     a.board-header-btn.js-open-filter-view(
         title="{{#if Filter.isActive}}{{_ 'filter-on-desc'}}{{/if}}"
         class="{{#if Filter.isActive}}emphasis{{/if}}")
@@ -66,10 +34,6 @@ template(name="headerBoard")
       if Filter.isActive
         a.board-header-btn-close.js-filter-reset(title="{{_ 'filter-clear'}}")
           i.fa.fa-times-thin
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix route and unsaved of anonymous
     if currentUser      
       if currentUser.isBoardMember
         a.board-header-btn.js-multiselection-activate(
@@ -84,25 +48,6 @@ template(name="headerBoard")
       .separator
       a.board-header-btn.js-open-board-menu
         i.board-header-btn-icon.fa.fa-cog
-<<<<<<< HEAD
-=======
-
-    if currentUser.isBoardMember
-      a.board-header-btn.js-multiselection-activate(
-          title="{{#if MultiSelection.isActive}}{{_ 'multi-selection-on-desc'}}{{/if}}"
-          class="{{#if MultiSelection.isActive}}emphasis{{/if}}")
-        i.fa.fa-check-square-o
-        span {{_ 'multi-selection'}} {{#if MultiSelection.isActive}}{{_ 'is-on'}}{{/if}}
-        if MultiSelection.isActive
-          a.board-header-btn-close.js-multiselection-reset(title="{{_ 'multi-selection-clear'}}")
-            i.fa.fa-times-thin
-
-    .separator
-    a.board-header-btn.js-open-board-menu
-      i.board-header-btn-icon.fa.fa-cog
->>>>>>> merge wekan
-=======
->>>>>>> fix route and unsaved of anonymous
 
 template(name="boardMenuPopup")
   ul.pop-over-list
@@ -175,8 +120,6 @@ template(name="createBoardPopup")
       | {{_ 'title'}}
       input.js-new-board-title(type="text" placeholder="{{_ 'bucket-example'}}" autofocus required)
     label
-<<<<<<< HEAD
-<<<<<<< HEAD
       | {{_ 'set-organization'}}
       select(name="org-id" id="org-id" class="org-sel")
         option(value='' selected="{{#if isCurrentOrg }}selected{{/if}}") {{_ 'none'}} 
@@ -188,26 +131,6 @@ template(name="createBoardPopup")
       .org-member-auto-join-module
         .materialCheckBox.org-member-auto-join.js-org-member-auto-join(class="{{#if checkOrgMemberAutoJoin.get }}is-checked{{/if}}")
         span.org-member-auto-join-text {{_ 'org-member-auto-join-description'}}       
-=======
-      select(name="org-id" class="org-sel")
-=======
-      | {{_ 'set-organization'}}
-      select(name="org-id" id="org-id" class="org-sel")
->>>>>>> fix language for safari mobile
-        option(value='' selected="{{#if isCurrentOrg }}selected{{/if}}") {{_ 'none'}} 
-        if canCreateBoardOrgs.count  
-          each canCreateBoardOrgs
-            if currentUser.isOrganizationAdmin _id
-              option(value='{{_id}}' selected="{{#if isCurrentOrg _id}}selected{{/if}}") {{_ title}}        
-<<<<<<< HEAD
-           
->>>>>>> merge wekan
-=======
-    if showOrgMemberAutoJoin.get
-      .org-member-auto-join-module
-        .materialCheckBox.org-member-auto-join.js-org-member-auto-join(class="{{#if checkOrgMemberAutoJoin.get }}is-checked{{/if}}")
-        span.org-member-auto-join-text {{_ 'org-member-auto-join-description'}}       
->>>>>>> fix language for safari mobile
     if visibilityMenuIsOpen.get
       +boardVisibilityList
     else
