@@ -47,7 +47,7 @@ BlazeComponent.extendComponent({
   },
 
   scrollLeft(position = 0) {
-    this.$('.js-lists').animate({
+    $('.js-lists').animate({
       scrollLeft: position,
     });
   },
