@@ -16,9 +16,6 @@ BlazeComponent.extendComponent({
   getInput() {
     return this.$('.js-new-comment-input');
   },
-<<<<<<< HEAD
-    evt.preventDefault();  },
-=======
 
   onRendered() {
     // if( Session.get('currentCommentCard') === this.currentData()._id )
@@ -70,7 +67,6 @@ BlazeComponent.extendComponent({
       },
     }];
   },
->>>>>>> fix route and unsaved of anonymous
 }).register('commentForm');
 
 // XXX This should be a static method of the `commentForm` component
@@ -99,34 +95,13 @@ EscapeActions.register('inlinedForm',
       docId: Session.get('currentCard'),
     };
     const commentInput = $('.js-new-comment-input');
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const draft = commentInput.val().trim();
-    if (draft) {
-      UnsavedEdits.set(draftKey, draft);
-=======
-    if ($.trim(commentInput.val())) {
-=======
 
     const draft = commentInput.val().trim();
     if (draft) {
->>>>>>> resolve conflict
-=======
-    const draft = commentInput.val().trim();
-    if (draft) {
->>>>>>> fix merge error
       if(Meteor.userId())
         UnsavedEdits.set(draftKey, draft);
       else
         SessionUnsavedEdits.set(draftKey, commentInput.val());
-<<<<<<< HEAD
->>>>>>> fix route and unsaved of anonymous
-=======
->>>>>>> update from wekan devel
-=======
->>>>>>> fix merge error
     } else {
       UnsavedEdits.reset(draftKey);
       SessionUnsavedEdits.reset(draftKey);

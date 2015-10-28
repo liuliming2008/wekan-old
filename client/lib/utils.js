@@ -22,35 +22,6 @@ Utils = {
     return string.charAt(0).toUpperCase() + string.slice(1);
   },
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // Determine the new sort index of new created cards
-  // dont use calculateIndex 
-  calculateSort(type, listId){
-    var base = 0;
-    var increment = 1;
-    if( Cards.find({listId:listId}).count() === 0){
-      base = 0;
-    } 
-    else if( type === "top" ){
-      var topsort = Cards.find({listId:listId}).fetch()[0].sort;
-      base = topsort - 1;
-    }
-    else if( type === "bottom" ){
-      var topsort = Cards.find({listId:listId}).fetch()[Cards.find({listId:listId}).count()-1].sort;
-      base = topsort + 1;    
-    }
-    return base;
-  },
-
-=======
->>>>>>> merge wekan
-=======
-<<<<<<< .mine
->>>>>>> merge wekan
-=======
->>>>>>> lead to login for unloged suer
   // Determine the new sort index of new created cards
   // dont use calculateIndex 
   calculateSort(type, listId){
@@ -102,8 +73,6 @@ Utils = {
     };
   },
   compareDay: function(start, end) {
-<<<<<<< HEAD
-<<<<<<< HEAD
     
     var starttime = new Date(start.getFullYear(), start.getMonth(), start.getDate());
     var starttimes = starttime.getTime();
@@ -118,30 +87,6 @@ Utils = {
       return 1;
     else
       return -1;
-=======
-    var arr = start.toString().split("-");
-    var starttime = new Date(arr[0], arr[1], arr[2]);
-=======
-    
-    var starttime = new Date(start.getFullYear(), start.getMonth(), start.getDate());
->>>>>>> fix bug
-    var starttimes = starttime.getTime();
-
-    var lktime = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-    var lktimes = lktime.getTime();
-
-    if (starttimes === lktimes) {
-      return 0;
-    }
-    else if (starttimes > lktimes) 
-      return 1;
-    else
-<<<<<<< HEAD
-        return false;
->>>>>>> add votes
-=======
-      return -1;
->>>>>>> fix bug
 
   },
 };

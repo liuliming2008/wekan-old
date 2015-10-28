@@ -55,49 +55,6 @@ BlazeComponent.extendComponent({
     this.parentComponent().showOverlay.set(false);
   },
 
-<<<<<<< HEAD
-  descEditable(){
-    if( this.data().list().board().isPublic() || this.data().list().board().isPrivate() ){
-      if( Meteor.user() && Meteor.user().isBoardMember() )
-        return true;
-      else
-        return false;
-    }
-    else if ( this.data().list().board().isCollaborate() ){
-      if( Meteor.user() && (Meteor.user().isBoardAdmin() || this.data().userId === Meteor.userId() ) )
-        return true;
-      else
-        return false;
-    }
-  },
-
-  canComment(){
-    if( this.data().list().board().isPublic() || this.data().list().board().isPrivate() ){
-      if( Meteor.user().isBoardMember() )
-        return true;
-      else
-        return false;
-    }
-    else if ( this.data().list().board().isCollaborate() ){
-      // todo: separate permision for list comment, chat last condition to permission === 'member' && Meteor.user() && Meteor.user().isBoardMember()))
-      if( (this.data().list().permission === 'admin' && Meteor.user() && Meteor.user().isBoardAdmin()) ||
-        ( this.data().list().permission === 'registered' && Meteor.user()) || 
-        ( this.data().list().permission === 'member' && Meteor.user() ))
-         return true;
-      else
-        return false;
-    }
-  },
-
-  showCommentForm(){
-    if( this.data().board().isCollaborate() && this.data().list().permission === 'registered')
-      return true;
-    else
-      return false;
-  },
-
-=======
->>>>>>> merge wekan
   descEditable(){
     if( this.data().list().board().isPublic() || this.data().list().board().isPrivate() ){
       if( Meteor.user() && Meteor.user().isBoardMember() )
@@ -158,18 +115,8 @@ BlazeComponent.extendComponent({
       },
       'submit .js-card-details-title'(evt) {
         evt.preventDefault();
-<<<<<<< HEAD
-<<<<<<< HEAD
         const title = this.currentComponent().getValue().trim();
         if (title) {
-=======
-        const title = this.currentComponent().getValue();
-        if ($.trim(title)) {
->>>>>>> merge wekan
-=======
-        const title = this.currentComponent().getValue().trim();
-        if (title) {
->>>>>>> resolve conflict
           this.data().setTitle(title);
         }
       },
@@ -180,39 +127,16 @@ BlazeComponent.extendComponent({
         this.parentComponent().showOverlay.set(true);
         this.parentComponent().mouseHasEnterCardDetails = true;
       },
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix route and unsaved of anonymous
-=======
->>>>>>> fix merge error
       'click .js-vote-card'(evt) {
         if(!Meteor.user()) {
           evt.preventDefault();
           FlowRouter.go("/sign-in");
           return;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      'click .js-vote-card'() {
-        if(!Meteor.user()) FlowRouter.go("/login");
->>>>>>> lead to login for unloged suer
-=======
->>>>>>> fix route and unsaved of anonymous
-=======
->>>>>>> fix merge error
         Meteor.user().voteCard(this.currentData()._id);
         //Users.update(Meteor.UserId(),{$addToSet: {profile.votedCards: this.currentData()._id}});
       },
     }];
-<<<<<<< HEAD
-=======
->>>>>>> update from wekan devel
-=======
->>>>>>> fix merge error
   },
 }).register('cardDetails');
 

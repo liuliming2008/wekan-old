@@ -16,6 +16,10 @@ template(name="headerBoard")
         a.board-header-btn(class="{{#if currentUser.isBoardAdmin}}js-change-visibility{{else}}is-disabled{{/if}}")
           i.fa(class="{{#if isPublic}}fa-globe{{else}}{{#if isCollaborate}}fa-magic{{else}}fa-lock{{/if}}{{/if}}")
           span {{_ currentBoard.permission}}
+      else
+        span.board-header-btn
+          i.fa(class="{{#if isPublic}}fa-globe{{else}}{{#if isCollaborate}}fa-magic{{else}}fa-lock{{/if}}{{/if}}")
+          span {{_ currentBoard.permission}}
       a.board-header-btn.js-change-sort {{_ getSortTypeText}}
           i.fa.fa-angle-down
 

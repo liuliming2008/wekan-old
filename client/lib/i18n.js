@@ -18,6 +18,7 @@ Tracker.autorun(() => {
     language = language.substr(0,language.indexOf('-')+1) + language.substr(language.indexOf('-')+1).toUpperCase();
   
   if (language) {
+
     TAPi18n.setLanguage(language);
 
     // T9n need to change zh-CN to zh_cn

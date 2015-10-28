@@ -47,7 +47,7 @@ BlazeComponent.extendComponent({
   },
 
   scrollLeft(position = 0) {
-    $('.js-lists').animate({
+    this.$('.js-lists').animate({
       scrollLeft: position,
     });
   },
@@ -241,7 +241,8 @@ BlazeComponent.extendComponent({
       submit(evt) {
         evt.preventDefault();
         var permission = this.permission.get();
-        const title = this.find('.list-name-input').value.trim();
+        const titleInput =  this.find('.list-name-input');
+        const title = titleInput.value.trim();
         if (title) {
           Lists.insert({
             title,
@@ -249,9 +250,8 @@ BlazeComponent.extendComponent({
             sort: $('.list').length,
             permission: permission,
           });
- 
-          title.value = '';
-          title.focus();
+          titleInput.value = '';
+          titleInput.focus();
         }
       },
     }];

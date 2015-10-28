@@ -14,8 +14,10 @@ template(name="userFormsLayout")
       span {{_ "login-app-name"}}
     h2.app-description
       span {{_ "login-app-description"}}
-
     +Template.dynamic(template=content)
+    h2.app-description
+      a(href="/b/yZpBj5jrLWMpEuGPQ/board")
+        span {{_ "suggest"}}
 
 template(name="boardsLayout")
   +header

@@ -63,7 +63,7 @@ Users.helpers({
     if (org && this.isOrganizationMember(org))
       return _.where(org.members, {userId: this._id})[0].isAdmin;
   },
-  
+
   getAvatarUrl() {
     // Although we put the avatar picture URL in the `profile` object, we need
     // to support Sandstorm which put in the `picture` attribute by default.
@@ -266,35 +266,35 @@ if (Meteor.isServer) {
   });
 
   // XXX i18n
-  // Users.after.insert((userId, doc) => {
-  //   const ExampleBoard = {
-  //     title: 'Welcome Board',
-  //     userId: doc._id,
-  //     permission: 'private',
-  //   };
+  Users.after.insert((userId, doc) => {
+    const ExampleBoard = {
+      title: 'Welcome Board',
+      userId: doc._id,
+      permission: 'private',
+    };
 
-  //   // Insert the Welcome Board
-  //   Boards.insert(ExampleBoard, (err, boardId) => {
-  //     let sort = 0;
-  //     ['Basics', 'Advanced'].forEach((title) => {
-  //       const list = {
-  //         title,
-  //         boardId,
-  //         userId: ExampleBoard.userId,
-  //         sort,
-  //         permission: 'member',
+    // Insert the Welcome Board
+    Boards.insert(ExampleBoard, (err, boardId) => {
+      let sort = 0;
+      ['Basics', 'Advanced'].forEach((title) => {
+        const list = {
+          title,
+          boardId,
+          userId: ExampleBoard.userId,
+          sort,
+          permission: 'member',
 
-  //         // XXX Not certain this is a bug, but we except these fields get
-  //         // inserted by the Lists.before.insert collection-hook. Since this
-  //         // hook is not called in this case, we have to dublicate the logic and
-  //         // set them here.
-  //         archived: false,
-  //         createdAt: new Date(),
-  //       };
+          // XXX Not certain this is a bug, but we except these fields get
+          // inserted by the Lists.before.insert collection-hook. Since this
+          // hook is not called in this case, we have to dublicate the logic and
+          // set them here.
+          archived: false,
+          createdAt: new Date(),
+        };
 
-  //       Lists.insert(list);
-  //       sort++;
-  //     });
-  //   });
-  // });
+        Lists.insert(list);
+        sort++;
+      });
+    });
+  });
 }

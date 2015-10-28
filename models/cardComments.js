@@ -29,7 +29,7 @@ CardComments.allow({
     if( Boards.findOne(doc.boardId).isPublic() || Boards.findOne(doc.boardId).isPrivate())
       return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
     else if( Boards.findOne(doc.boardId).isCollaborate() ) {
-      if( ( Cards.findOne(doc.cardId).list().permission === 'admn' &&Meteor.user().isBoardAdmin(doc.boardId) )||
+      if( ( Cards.findOne(doc.cardId).list().permission === 'admin' &&Meteor.user().isBoardAdmin(doc.boardId) )||
         ( Cards.findOne(doc.cardId).list().permission === 'registered' && Meteor.user()) || 
         ( Cards.findOne(doc.cardId).list().permission === 'member' && Meteor.user().isBoardMember(doc.boardId)))
         return true;

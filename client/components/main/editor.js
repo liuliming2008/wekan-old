@@ -53,33 +53,11 @@ Template.editor.onRendered(() => {
 const at = HTML.CharRef({html: '&commat;', str: '@'});
 Blaze.Template.registerHelper('mentions', new Template('mentions', function() {
   const view = this;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-  if( !Session.get('currentBoard') ) return;
->>>>>>> fix permission
-  const currentBoard = Boards.findOne(Session.get('currentBoard'));
-  
-  if( !currentBoard ) return;
-  const knowedUsers = currentBoard.members.map((member) => {
-<<<<<<< HEAD
-=======
 
   const currentBoard = Boards.findOne(Session.get('currentBoard'));
-<<<<<<< HEAD
 
   if( !currentBoard ) return;
-<<<<<<< HEAD
-  const knowedUsers = _.map(currentBoard.members, (member) => {
->>>>>>> fix
-=======
   const knowedUsers = currentBoard.members.map((member) => {
->>>>>>> resolve conflict
-=======
->>>>>>> update from wekan devel
-=======
->>>>>>> fix merge error
     member.username = Users.findOne(member.userId).username;
     return member;
   });

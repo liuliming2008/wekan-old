@@ -7,12 +7,6 @@ template(name="orgsLayout")
     +header
     #orgs-content
       +Template.dynamic(template=content)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix route and unsaved of anonymous
     if (Modal.isOpen)
       #modal
         .overlay
@@ -20,34 +14,10 @@ template(name="orgsLayout")
           a.modal-close-btn.js-close-modal
             i.fa.fa-times-thin
           +Template.dynamic(template=Modal.getTemplateName)  
-<<<<<<< HEAD
-=======
-=======
->>>>>>> follow code standard
-      if (Modal.isOpen)
-    #modal
-      .overlay
-      .modal-content
-        a.modal-close-btn.js-close-modal
-          i.fa.fa-times-thin
-        +Template.dynamic(template=Modal.getTemplateName)
-<<<<<<< HEAD
->>>>>>> code standard
-=======
->>>>>>> follow code standard
-=======
-      
->>>>>>> merge wekan
-=======
->>>>>>> fix route and unsaved of anonymous
 
 
 template(name="organization")
   if isOrgReady.get
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix permission
     if currentUser
       if currentOrganization
         .org
@@ -55,41 +25,18 @@ template(name="organization")
             .header-wrapper.u-clearfix
               .org-name
                 h1 {{currentOrganization.title}}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> resolve conflict
               if currentUser.isOrganizationAdmin
                 .org-edit
                   a.button-link.js-edit-org 
                     i.fa.fa-pencil 
                     | {{_ "edit"}}
-<<<<<<< HEAD
               .org-desc
                 span {{currentOrganization.description}}
               
-=======
-              .org-desc
-                span {{currentOrganization.description}}
->>>>>>> fix permission
-=======
-              .org-edit
-                a.button-link.js-edit-org 
-                  i.fa.fa-pencil 
-                  | {{_ "edit"}}
-=======
->>>>>>> resolve conflict
-              .org-desc
-                span {{currentOrganization.description}}
-              
->>>>>>> new feature：invite members to board or organization with email
           .nav
           .main.u-clearfix
             .main-wrapper
               if currentUser.isOrganizationAdmin
-<<<<<<< HEAD
-<<<<<<< HEAD
                 .window-module.org-functions
                   .org-members-options
                     a.button-link.js-manage-org-members 
@@ -99,70 +46,13 @@ template(name="organization")
                     a.button-link.js-org-send-invite 
                       i.fa.fa-send-o 
                       | {{_ "invite"}}
-=======
-                .window-module 
-                  .org-members-options
-                      a.button-link.js-manage-org-members 
-                        i.fa.fa-plus 
-                        | {{_ "add-member"}}
->>>>>>> fix permission
-=======
-                .window-module.org-functions
-                  .org-members-options
-                    a.button-link.js-manage-org-members 
-                      i.fa.fa-plus 
-                      | {{_ "add-member"}}
-                  .org-send-invite
-                    a.button-link.js-org-send-invite 
-                      i.fa.fa-send-o 
-                      | {{_ "invite"}}
->>>>>>> new feature：invite members to board or organization with email
                 hr
               .window-module.js-member-list
                   each currentOrganization.members
                     +userCard(user=this org=currentOrganization)
-<<<<<<< HEAD
-<<<<<<< HEAD
       else
         //- XXX We need a better error message in case the board has been archived
         +message(label="organization-not-found")
-=======
-    if currentOrganization
-      .org
-        .header
-          .header-wrapper.u-clearfix
-            .org-name
-              h1 {{currentOrganization.title}}
-            .org-desc
-              span {{currentOrganization.description}}
-        .nav
-        .main.u-clearfix
-          .main-wrapper
-            .window-module 
-              .org-members-options
-                if currentUser.isOrganizationAdmin
-                  a.button-link.js-manage-org-members 
-                    i.fa.fa-plus 
-                    | {{_ "Add Memebers"}}
-                    
-            hr
-            .window-module.js-member-list
-                each currentOrganization.members
-                  +userCard(user=this org=currentOrganization)
-    else
-      //- XXX We need a better error message in case the board has been archived
-      +message(label="organization-not-found")
->>>>>>> merge wekan
-=======
-        else
-          //- XXX We need a better error message in case the board has been archived
-          +message(label="organization-not-found")
->>>>>>> fix permission
-=======
-      else
-        //- XXX We need a better error message in case the board has been archived
-        +message(label="organization-not-found")
->>>>>>> fix
   else
     +spinner
 
@@ -256,8 +146,4 @@ template(name="inviteEmailsForOrgPopup")
       | {{_ 'invite-emails'}}
       textarea.js-invite-emails-input(type="text" placeholder="{{_ 'invite-emails-description'}}"
         autocomplete="off" autofocus)
-<<<<<<< HEAD
     input.primary.wide(type="submit" value="{{_ 'send'}}")
-=======
-    input.primary.wide(type="submit" value="{{_ 'send'}}")
->>>>>>> new feature：invite members to board or organization with email

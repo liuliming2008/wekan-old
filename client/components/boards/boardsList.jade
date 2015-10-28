@@ -41,11 +41,6 @@ template(name="boardList")
                   i.fa.js-star-board(
                     class="fa-star{{#if isStarred}} is-star-active{{else}}-o{{/if}}"
                     title="{{_ 'star-board-title'}}")
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix permission bug
                   span.board-list-item-role  
                     if($eq getRole 'creator')
                       | {{_ 'creator'}}
@@ -62,29 +57,6 @@ template(name="boardList")
           h2
             i.fa.fa-plus
             | {{_ 'add-organization'}}
-=======
-          if currentUser.isOrganizationAdmin
-            li.js-add-board.is-idle.add-board(id="org-{{_id}}")
-              a.label {{_ 'add-board'}}
-    i.fa
-      +addOrgForm
->>>>>>> lead to login for unloged suer
-=======
-          if currentUser.isOrganizationAdmin this._id
-            li.js-add-board.is-idle.add-board(id="org-{{_id}}")
-              a.label {{_ 'add-board'}}
-    div.window-module
-      .window-module-title
-<<<<<<< HEAD
-        i.fa
-          +addOrgForm
->>>>>>> fix permission
-=======
-         a.add-org.js-add-org
-          h2
-            i.fa.fa-plus
-            | {{_ 'add-organization'}}
->>>>>>> fix language for safari mobile
       
 template(name="createOrgPopup") 
   form
